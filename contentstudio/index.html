@@ -12,7 +12,7 @@
     --serif:'Cormorant',serif;--sans:'Inter',sans-serif;--hand:'Cormorant',serif;--sig:'Oooh Baby',cursive}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  .cs-body{position:relative;background:var(--wit);color:var(--bruin);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .cs-body{position:relative;background:var(--wit);color:var(--bruin);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
   .cs-body::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:100;opacity:.05;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;font-variant-numeric:lining-nums}
@@ -313,7 +313,7 @@
   #zo-loopt-het .st.cur{transform:translateX(14px)}
   #zo-loopt-het .st .tm{font-size:2.6rem;font-weight:500;line-height:1;color:var(--bruin)}
   #zo-loopt-het .st.cur .tm{color:var(--klei)}
-  .sticky-media{position:sticky;top:60px;display:flex;flex-direction:column;align-items:center}
+  .sticky-media{position:sticky;top:calc(60px + var(--stick,0px));display:flex;flex-direction:column;align-items:center}
   .clockwrap{position:relative;width:min(420px,38vw);aspect-ratio:1}
   .cvid{position:absolute;inset:7.5%;border-radius:50%;overflow:hidden;box-shadow:0 40px 60px -40px rgba(84,66,58,.6)}
   .cvid video,.cvid .vwrap{display:block;width:100%;height:100%;object-fit:cover}
@@ -329,7 +329,7 @@
   .cstep{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--klei);margin-top:6px}
   @media(max-width:860px){
     #zo-loopt-het .two{display:flex;flex-direction:column;gap:30px}
-    .sticky-media{order:-1;top:0;z-index:5;flex-direction:row;gap:18px;background:linear-gradient(var(--wit) 82%,rgba(250,247,242,0));padding:14px 0 22px;justify-content:center;width:100%}
+    .sticky-media{order:-1;top:var(--stick,0px);z-index:5;flex-direction:row;gap:18px;background:linear-gradient(var(--wit) 82%,rgba(250,247,242,0));padding:14px 0 22px;justify-content:center;width:100%}
     .clockwrap{width:118px}
     .ctime{font-size:2.6rem;margin-top:0}
     .sticky-media .ctxt{display:flex;flex-direction:column}
@@ -745,6 +745,24 @@ const root = window.__csRoot || document;
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(frame)}},{passive:true});
   addEventListener('resize',frame);
   frame();
+})();
+
+/* boven de vaste WordPress-header blijven plakken */
+(function(){
+  if(root===document) return;
+  const body=root.querySelector('.cs-body');
+  function hdr(){
+    let b=0;
+    document.querySelectorAll('header, .elementor-location-header, [data-elementor-type="header"], #wpadminbar').forEach(el=>{
+      let n=el; let fixed=false;
+      while(n&&n!==document.body){const p=getComputedStyle(n).position; if(p==='fixed'||p==='sticky'){fixed=true;break} n=n.parentElement}
+      if(!fixed) return;
+      const r=el.getBoundingClientRect();
+      if(r.height>0&&r.top<=1&&r.bottom>b) b=r.bottom;
+    });
+    body.style.setProperty('--stick',Math.round(b)+'px');
+  }
+  hdr(); addEventListener('scroll',hdr,{passive:true}); addEventListener('resize',hdr);
 })();
 </script>
 </body>

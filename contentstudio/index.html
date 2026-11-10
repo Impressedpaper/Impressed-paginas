@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Create &amp; Connect Contentstudio (high-end versie)</title>
+<title>Create &amp; Connect Contentstudio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Oooh+Baby&display=swap" rel="stylesheet">
 <style>
-  :root{--wit:#FAF7F2;--creme:#F5F3F0;--taupe:#B8A796;--bruin:#54423A;--klei:#9A6450;--zklei:#D9B8A8;--zklei2:#EBD9CF;--geel:#EFE3CB;
+  :root,:host{--wit:#FAF7F2;--creme:#F5F3F0;--taupe:#B8A796;--bruin:#54423A;--klei:#9A6450;--zklei:#D9B8A8;--zklei2:#EBD9CF;--geel:#EFE3CB;
     --serif:'Cormorant',serif;--sans:'Inter',sans-serif;--hand:'Cormorant',serif;--sig:'Oooh Baby',cursive}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--wit);color:var(--bruin);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+  .cs-body{position:relative;background:var(--wit);color:var(--bruin);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .cs-body::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:100;opacity:.05;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;font-variant-numeric:lining-nums}
   h1 em,h2 em{font-style:italic;color:var(--klei)}
@@ -392,7 +392,8 @@
   @media(max-width:760px){.incl3{grid-template-columns:1fr;gap:28px}.incl3>div{border-left:none;border-top:1px solid rgba(184,167,150,.5);padding-top:24px}.incl3>div:first-child{border-top:none;padding-top:0}}
 </style>
 </head>
-<body>
+<body style="margin:0">
+<div class="cs-body">
 
 
 
@@ -612,7 +613,9 @@
 
 
 
+</div>
 <script>
+const root = window.__csRoot || document;
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
@@ -628,7 +631,7 @@
     ['Gaat dit mijn doelgroep aantrekken?','We kijken samen of je content je droomklant raakt.'],
     ['Altijd last minute','Je content is een maand op voorhand klaar.']
   ];
-  const wall = document.getElementById('wall');
+  const wall = root.getElementById('wall');
   const rots = [-1,1,-.5,1,-1,.5,-1,1];
   const pis = notes.map(([f,b],i)=>{
     const d=document.createElement('div'); d.className='pi'; d.tabIndex=0; d.setAttribute('role','button');
@@ -643,8 +646,8 @@
   const wordTxt=['nooit genoeg tijd','reel of carrousel?','ideeën?','wat post ik morgen?','is dit goed genoeg?','LinkedIn??','altijd last minute','consistent blijven','geen planning'];
   const wD=[[3,26],[22,72],[41,22],[57,80],[73,28],[88,76],[11,128],[34,136],[66,130]];
   const wM=[[3,18],[46,30],[80,16],[2,66],[48,78],[80,64],[4,116],[42,128],[72,112]];
-  const wordsEl=document.getElementById('words'), hero=document.querySelector('.hero'), phone=document.getElementById('phone');
-  const tiles=[...document.querySelectorAll('#grid9 .tile')], stamp=document.getElementById('stamp');
+  const wordsEl=root.getElementById('words'), hero=root.querySelector('.hero'), phone=root.getElementById('phone');
+  const tiles=[...root.querySelectorAll('#grid9 .tile')], stamp=root.getElementById('stamp');
   const ws=wordTxt.map(t=>{const d=document.createElement('div');d.className='w';d.innerHTML='<span>'+t+'</span>';wordsEl.appendChild(d);return d});
   ws.forEach((w,i)=>w.firstChild.style.animationDelay=(-i*0.8)+'s');
   function drawHero(){
@@ -676,32 +679,35 @@
     bloem:['bloemist',['bloemen van het seizoen','zo maak ik een bruidsboeket','mijn waarom','van schets tot tafel','een bruid vertelt','5 tips voor je budget','een dag in het atelier','trends die ik oversla','wat er nieuw is']],
     papier:['stationery',['zo kies je je papier','uitnodigingen in de maak','mijn waarom','van idee tot drukwerk','een koppel vertelt','5 tips voor je tekst','een dag in mijn atelier','fouten die ik vaak zie','wat er nieuw is']]
   };
-  const tileEls=[...document.querySelectorAll('#grid9 .tile')], nmsub=document.getElementById('nmsub');
-  document.querySelectorAll('#sect button').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('#sect button').forEach(x=>x.classList.toggle('on',x===b));
+  const tileEls=[...root.querySelectorAll('#grid9 .tile')], nmsub=root.getElementById('nmsub');
+  root.querySelectorAll('#sect button').forEach(b=>b.addEventListener('click',()=>{
+    root.querySelectorAll('#sect button').forEach(x=>x.classList.toggle('on',x===b));
     const [nm,txt]=SECT[b.dataset.s]; nmsub.textContent=nm+' · Vilvoorde';
     tileEls.forEach((t,k)=>{ setTimeout(()=>{t.classList.add('swap'); setTimeout(()=>{t.querySelector('i').textContent=txt[k]; t.classList.remove('swap')},220)}, k*45) });
   }));
 
   // typed caption on hero polaroid
-  (function(){const el=document.getElementById('typed'); if(!el) return; const txt='Create & Connect';
+  (function(){const el=root.getElementById('typed'); if(!el) return; const txt='Create & Connect';
     if(reduce){el.textContent=txt;return}
     let k=0; setTimeout(function step(){el.textContent=txt.slice(0,++k); if(k<txt.length) setTimeout(step, txt[k-1]===' '?110:70+Math.random()*50);},650);
   })();
 
+  // anchors (also inside the website embed)
+  root.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=root.querySelector(a.getAttribute('href')); if(t){e.preventDefault(); t.scrollIntoView({behavior:'smooth'});}}));
+
   // reveal
   const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  root.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
   // dates
 
   if(reduce) { pis.forEach(p=>p.style.opacity=1); return; }
 
   // scroll-driven motion (page keeps scrolling, nothing gets pinned)
-  const par=[...document.querySelectorAll('[data-par]')];
-  const tl=document.getElementById('tl'), steps=[...tl.querySelectorAll('.st')];
-  const ctime=document.getElementById('ctime'), cstep=document.getElementById('cstep'), cmin=document.getElementById('cmin'), chour=document.getElementById('chour'), carc=document.getElementById('carc');
-  const tk=document.getElementById('cticks'); for(let q=0;q<12;q++){const l=document.createElementNS('http://www.w3.org/2000/svg','line'); l.setAttribute('x1',100);l.setAttribute('y1',3);l.setAttribute('x2',100);l.setAttribute('y2',q%3?9:14);l.setAttribute('transform',`rotate(${q*30} 100 100)`); tk.appendChild(l);}
+  const par=[...root.querySelectorAll('[data-par]')];
+  const tl=root.getElementById('tl'), steps=[...tl.querySelectorAll('.st')];
+  const ctime=root.getElementById('ctime'), cstep=root.getElementById('cstep'), cmin=root.getElementById('cmin'), chour=root.getElementById('chour'), carc=root.getElementById('carc');
+  const tk=root.getElementById('cticks'); for(let q=0;q<12;q++){const l=document.createElementNS('http://www.w3.org/2000/svg','line'); l.setAttribute('x1',100);l.setAttribute('y1',3);l.setAttribute('x2',100);l.setAttribute('y2',q%3?9:14);l.setAttribute('transform',`rotate(${q*30} 100 100)`); tk.appendChild(l);}
   let tick=false;
   function frame(){
     const vh=innerHeight;
@@ -731,9 +737,9 @@
     steps.forEach((s,k)=>s.classList.toggle('cur',k===cur));
     cstep.textContent=steps[cur].querySelector('h3').textContent;
     drawHero();
-    document.querySelectorAll('[data-bth]').forEach(el=>{el.style.transform=`translateX(${scrollY*0.5*+el.dataset.bth}px)`});
-    document.querySelectorAll('[data-hxpar]').forEach(el=>{el.style.transform=`translateY(${-scrollY*0.18}px) rotate(${-scrollY*0.01}deg)`});
-    document.querySelectorAll('[data-bt]').forEach(el=>{const r=el.getBoundingClientRect(); const c=(r.top+r.height/2-innerHeight/2); el.style.transform=`translateX(${c*0.35*+el.dataset.bt}px)`});
+    root.querySelectorAll('[data-bth]').forEach(el=>{el.style.transform=`translateX(${scrollY*0.5*+el.dataset.bth}px)`});
+    root.querySelectorAll('[data-hxpar]').forEach(el=>{el.style.transform=`translateY(${-scrollY*0.18}px) rotate(${-scrollY*0.01}deg)`});
+    root.querySelectorAll('[data-bt]').forEach(el=>{const r=el.getBoundingClientRect(); const c=(r.top+r.height/2-innerHeight/2); el.style.transform=`translateX(${c*0.35*+el.dataset.bt}px)`});
     tick=false;
   }
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(frame)}},{passive:true});

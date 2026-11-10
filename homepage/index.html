@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twee paden, één deur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=Oooh+Baby&display=swap">
+<style>
+  /* ============================================================
+     HOMEPAGE "TWEE PADEN, EEN DEUR"  v32
+     Zelfde tokens als de Create & Connect-pagina (klei-knoppen, rechthoekig).
+     Klei enkel voor CTA's. Hover = donkerbruin. Merken onderscheiden met een dun lijntje.
+     Geen nav, geen footer, geen kleine drukletter-labels boven titels.
+     ============================================================ */
+  :root, :host {
+    --wit: #FAF7F2;
+    --creme: #F5F3F0;
+    --taupe: #B8A796;
+    --bruin: #54423A;
+    --klei: #9A6450;
+    --zklei: #D9B8A8;
+    --ink-soft: rgba(84,66,58,.78);
+    --line: rgba(184,167,150,.35);
+    --line-strong: rgba(184,167,150,.7);
+    --g: var(--zklei);
+    --p: var(--taupe);
+    --edge: clamp(20px, 5vw, 72px);
+    --space: clamp(84px, 10vw, 150px);
+    --w-wide: 1180px;
+    --ease: cubic-bezier(.22,.61,.24,1);
+    --ease-out: cubic-bezier(.16,1,.3,1);
+    --serif: 'Cormorant', Georgia, serif;
+    --sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --sig: 'Oooh Baby', cursive;
+    --paper-tex: url(media/papier.jpg);
+  }
+  body { margin: 0; background: var(--wit); }
+  .cc-scope, .cc-scope *, .cc-scope *::before, .cc-scope *::after { box-sizing: border-box; }
+  .cc-scope { display: block; background: var(--wit); color: var(--bruin); font-family: var(--sans); font-size: 16px; line-height: 1.7; overflow-x: clip; -webkit-font-smoothing: antialiased; }
+  .cc-scope ::selection { background: var(--zklei); color: var(--bruin); }
+  .cc-scope h1, .cc-scope h2, .cc-scope h3 { font-family: var(--serif) !important; font-weight: 500; text-wrap: balance; text-transform: none !important; letter-spacing: -0.01em !important; color: var(--bruin); margin: 0; }
+  .cc-scope h1 em, .cc-scope h2 em, .cc-scope h3 em { font-style: italic; color: inherit; }
+  .cc-scope p { margin: 0; }
+  .cc-scope img { display: block; max-width: 100%; }
+  .cc-scope button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-transform: none; letter-spacing: normal; box-shadow: none; }
+  .cc-scope a { color: inherit; }
+  .cc-scope .wrap { max-width: var(--w-wide); margin: 0 auto; }
+  .cc-scope .section { padding: var(--space) var(--edge); position: relative; }
+  .cc-scope .creme { background: var(--creme); }
+  .cc-scope .h2 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.04; max-width: 17ch; }
+  .cc-scope .lead { font-size: 1.04rem; line-height: 1.75; color: var(--ink-soft); max-width: 48ch; margin-top: 22px; font-weight: 400; }
+  .cc-scope .sec-head { margin-bottom: clamp(48px, 6vw, 80px); }
+  @media (min-width: 960px) {
+    .cc-scope .sec-head.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: end; }
+    .cc-scope .sec-head.split .lead { margin-top: 0; padding-bottom: 8px; }
+  }
+
+  /* ---------- KNOPPEN: zoals de Create & Connect-pagina ---------- */
+  .cc-scope .btn { display: inline-flex; align-items: center; gap: 14px; background: var(--klei); color: #fff !important; text-decoration: none !important; font-family: var(--sans); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; padding: 16px 30px; border-radius: 2px; border: 1px solid var(--klei); transition: background .3s, border-color .3s, transform .3s; }
+  .cc-scope .btn:hover { background: var(--bruin); border-color: var(--bruin); transform: translateY(-2px); }
+  .cc-scope .btn .arr { display: inline-block; letter-spacing: 0; transition: transform .4s var(--ease-out); }
+  .cc-scope .btn:hover .arr { transform: translateX(4px); }
+  .cc-scope .link { display: inline-flex; align-items: center; gap: 10px; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: inherit; text-decoration: none !important; padding: 6px 0 6px; background-image: linear-gradient(currentColor, currentColor), linear-gradient(rgba(184,167,150,.6), rgba(184,167,150,.6)); background-size: 0 1px, 100% 1px; background-position: 0 100%, 0 100%; background-repeat: no-repeat; transition: background-size .6s var(--ease); }
+  .cc-scope .link:hover { background-size: 100% 1px, 100% 1px; }
+  .cc-scope .link .arr { letter-spacing: 0; transition: transform .4s var(--ease-out); }
+  .cc-scope .link:hover .arr { transform: translateX(4px); }
+  .cc-scope .txt-link { color: var(--bruin); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .cc-scope .btn:focus-visible, .cc-scope .link:focus-visible, .cc-scope button:focus-visible, .cc-scope summary:focus-visible, .cc-scope .path:focus-visible { outline: 2px solid var(--klei); outline-offset: 3px; }
+
+  .cc-scope .progress { position: fixed; left: 0; top: var(--stick, 0px); height: 2px; width: 100%; z-index: 60; background: var(--bruin); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+
+  /* ---------- HERO: grote foto die openvouwt ---------- */
+  .cc-scope .hero { position: relative; height: 90vh; height: 90svh; min-height: 580px; max-height: 860px; overflow: hidden; background: var(--wit); color: var(--wit); }
+  .cc-scope .hero-frame { position: absolute; inset: 0; clip-path: inset(14% 31% 14% 31%); animation: unfold 1.15s cubic-bezier(.77,0,.18,1) .05s both; }
+  @keyframes unfold { to { clip-path: inset(0 0 0 0); } }
+  .cc-scope .hero-media { position: absolute; inset: -6% 0; will-change: transform; container-type: size; }
+  .cc-scope .hero-rot { position: absolute; inset: 0; }
+  .cc-scope .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; animation: heroZoom 1.8s var(--ease-out) .05s both; }
+  @keyframes heroZoom { from { transform: scale(1.45); } to { transform: scale(1.03); } }
+  .cc-scope .hero-frame::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 62%, rgba(54,42,37,.5), rgba(54,42,37,.12) 75%), linear-gradient(0deg, rgba(54,42,37,.55), rgba(54,42,37,0) 55%); opacity: 0; animation: fadeIn 1s var(--ease) .7s both; }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .cc-scope .hero-in { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 0 var(--edge) clamp(56px, 9vh, 104px); will-change: transform, opacity; }
+  .cc-scope .hero h1 { color: var(--wit) !important; font-size: clamp(2.7rem, 6.6vw, 5.6rem); line-height: 1; letter-spacing: -0.02em !important; text-shadow: 0 2px 30px rgba(54,42,37,.25); }
+  .cc-scope .hero h1 em { color: var(--wit) !important; }
+  .cc-scope .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .02em .1em; margin-bottom: -.1em; }
+  .cc-scope .hero h1 .w > span { display: inline-block; transform: translateY(110%) rotate(4deg); transform-origin: 0 100%; animation: wordUp 1.3s var(--ease-out) both; }
+  @keyframes wordUp { to { transform: none; } }
+  .cc-scope .hero h1 .br { display: block; height: 0; }
+  .cc-scope .hero-sub { font-size: clamp(1rem, 1.35vw, 1.12rem); line-height: 1.7; max-width: 54ch; margin-top: 26px; color: rgba(250,247,242,.92); animation: fadeUp 1s var(--ease-out) 1.3s both; }
+  .cc-scope .hero-sub strong { font-weight: 500; color: var(--wit); }
+  .cc-scope .hero-actions { margin-top: 34px; animation: fadeUp 1s var(--ease-out) 1.45s both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .cc-scope .scroll-cue { position: absolute; z-index: 2; left: 50%; bottom: 18px; width: 1px; height: 38px; background: rgba(250,247,242,.3); overflow: hidden; opacity: 0; animation: fadeIn 1s 1.8s both; }
+  .cc-scope .scroll-cue::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--wit); animation: cue 2.4s var(--ease) infinite; }
+  @keyframes cue { to { top: 100%; } }
+  @media (max-width: 719px) {
+    /* gsm: de liggende foto een kwartslag gedraaid, zodat hij het hele scherm vult */
+    .cc-scope .hero { height: 100vh; height: 100svh; min-height: 560px; max-height: none; }
+    .cc-scope .hero-frame { clip-path: inset(18% 14% 18% 14%); }
+    .cc-scope .hero-rot { inset: auto; left: 50%; top: 50%; width: 100cqh; height: 100cqw; transform: translate(-50%, -50%) rotate(90deg); }
+    .cc-scope .hero-media img { object-position: 50% 50%; }
+    .cc-scope .hero-frame::after { background: linear-gradient(0deg, rgba(54,42,37,.82), rgba(54,42,37,.2) 70%); }
+    .cc-scope .hero h1 { font-size: 2.6rem; }
+    .cc-scope .scroll-cue { display: none; }
+  }
+
+  /* ---------- 2 PADEN: eigen kleur + klik voor meer info ---------- */
+  .cc-scope .paths { display: grid; grid-template-columns: 1fr 1fr; align-items: start; background: var(--wit); }
+  .cc-scope .path { position: relative; color: var(--bruin); overflow: hidden; display: flex; flex-direction: column; padding: clamp(48px, 6vw, 96px) clamp(24px, 5vw, 80px) clamp(40px, 5vw, 72px); }
+  .cc-scope .path.growth { background: linear-gradient(rgba(217,184,168,.3), rgba(217,184,168,.3)), var(--wit); }
+  .cc-scope .path.paper { background: linear-gradient(rgba(184,167,150,.24), rgba(184,167,150,.24)), var(--wit); }
+  .cc-scope .path::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--c); }
+  .cc-scope .path.growth { --c: var(--g); } .cc-scope .path.paper { --c: var(--p); }
+  .cc-scope .path::before { content: ""; position: absolute; inset: 0; background-image: var(--paper-tex); background-size: cover; opacity: .18; mix-blend-mode: multiply; pointer-events: none; }
+  .cc-scope .path .body { flex: 1; display: flex; flex-direction: column; }
+  .cc-scope .path .body > * { position: relative; }
+  .cc-scope .path .brand { font-size: clamp(2.3rem, 4.4vw, 3.8rem); line-height: 1; }
+  .cc-scope .path .brand em { font-style: italic; color: var(--bruin) !important; }
+  .cc-scope .path .for { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 1.7vw, 1.4rem); margin-top: 12px; }
+  .cc-scope .path .who { font-size: 1rem; line-height: 1.7; margin: 18px 0 32px; max-width: 42ch; }
+  .cc-scope .path .short { display: none; }
+  .cc-scope .path .toggle { margin-top: 0; align-self: flex-start; display: inline-flex; align-items: center; gap: 14px; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: var(--bruin); padding: 8px 0; }
+  .cc-scope .path .more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .8s var(--ease-out); }
+  .cc-scope .path.open .more { grid-template-rows: 1fr; }
+  .cc-scope .path .more > div { overflow: hidden; }
+  .cc-scope .path .more ul { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid rgba(84,66,58,.3); }
+  .cc-scope .path .more li { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid rgba(84,66,58,.3); opacity: 0; transform: translateY(12px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+  .cc-scope .path.open .more li { opacity: 1; transform: none; }
+  .cc-scope .path.open .more li:nth-child(2) { transition-delay: .07s; }
+  .cc-scope .path.open .more li:nth-child(3) { transition-delay: .14s; }
+  .cc-scope .path.open .more li:nth-child(4) { transition-delay: .21s; }
+  .cc-scope .path .more li b { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; }
+  .cc-scope .path .more li span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+  .cc-scope .path .more .go { margin-top: 24px; display: inline-flex; color: var(--bruin); }
+  @media (max-width: 719px) {
+    .cc-scope .path { padding: 28px 14px 26px; }
+    .cc-scope .path .brand { font-size: 1.65rem; }
+    .cc-scope .path .brand em { display: block; }
+    .cc-scope .path .for { font-size: 1rem; margin-top: 8px; }
+    .cc-scope .path .who { display: none; }
+    .cc-scope .path .short { display: block; font-size: .86rem; line-height: 1.55; margin: 8px 0 18px; }
+    .cc-scope .path .toggle { font-size: .64rem; letter-spacing: .1em; gap: 8px; }
+    .cc-scope .path .toggle .ico { width: 12px; height: 12px; }
+    .cc-scope .path .more li { flex-direction: column; gap: 2px; padding: 12px 0; }
+    .cc-scope .path .more li b { font-size: 1.05rem; }
+    .cc-scope .path .more li span { font-size: .64rem; white-space: normal; }
+    .cc-scope .path .more .go { font-size: .64rem; }
+  }
+
+  /* ---------- TYPENDE REGEL ---------- */
+  .cc-scope .typeline { background: var(--wit); padding: clamp(56px, 7vw, 96px) var(--edge); text-align: center; border-bottom: 1px solid var(--line); }
+  .cc-scope .tl-text { font-family: var(--serif); font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.15; color: var(--bruin); min-height: 1.2em; }
+  .cc-scope .tl-b { font-style: italic; white-space: nowrap; }
+  @media (min-width: 720px) {
+    .cc-scope .tl-text { display: grid; grid-template-columns: 1fr 1fr; column-gap: .28em; }
+    .cc-scope .tl-a { text-align: right; }
+    .cc-scope .tl-b { text-align: left; }
+  }
+  @media (max-width: 719px) { .cc-scope .tl-a, .cc-scope .tl-b { display: block; } .cc-scope .tl-b { min-height: 1.2em; } }
+  .cc-scope .tw { color: var(--bruin); transition: color .3s; }
+  .cc-scope .tw.p { color: var(--bruin); }
+  .cc-scope .caret { display: inline-block; width: 1px; height: .9em; margin-left: 4px; vertical-align: -0.08em; background: currentColor; color: var(--bruin); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- OVER MIJ ---------- */
+  .cc-scope .about { display: grid; gap: clamp(40px, 6vw, 110px); align-items: center; }
+  @media (min-width: 900px) { .cc-scope .about { grid-template-columns: .85fr 1.15fr; } }
+  .cc-scope .about-photo { position: relative; aspect-ratio: 4 / 5.4; overflow: hidden; border-radius: 1000px 1000px 0 0; max-width: 460px; }
+  .cc-scope .about-photo img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 20% 45%; will-change: transform; }
+  .cc-scope .about .copy p { color: var(--ink-soft); font-size: 1.03rem; margin-top: 18px; max-width: 52ch; }
+  .cc-scope .about .copy strong { color: var(--bruin); font-weight: 600; }
+  .cc-scope .sig { font-family: var(--sig); font-size: clamp(2.6rem, 4vw, 3.4rem); line-height: 1.2; color: var(--bruin); margin-top: 24px; display: inline-block; clip-path: inset(0 100% 0 0); transition: clip-path 2.4s var(--ease) .5s; }
+  .cc-scope .sig.is-in { clip-path: inset(0 0 0 0); }
+  .cc-scope .stats { display: flex; gap: clamp(36px, 6vw, 80px); margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .cc-scope .stat .big { font-family: var(--serif); font-size: clamp(3rem, 5vw, 4rem); line-height: 1; color: var(--bruin); }
+  .cc-scope .stat .k { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-top: 10px; }
+
+  /* ---------- VENSTER: foto staat vast, de pagina schuift erover ---------- */
+  .cc-scope .window { position: relative; height: clamp(380px, 72vh, 720px); clip-path: inset(0 0 0 0); overflow: hidden; }
+  .cc-scope .window .wimg { position: fixed; inset: 0; width: 100%; height: 100vh; object-fit: cover; object-position: center 60%; z-index: 0; }
+  .cc-scope .window::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(54,42,37,.48); }
+  .cc-scope .window .wq { position: relative; z-index: 2; height: 100%; display: grid; place-items: center; text-align: center; padding: 0 var(--edge); }
+  .cc-scope .window .wq p { font-family: var(--serif); font-size: clamp(2.2rem, 5.6vw, 4.6rem); line-height: 1.06; color: var(--wit); max-width: 16ch; letter-spacing: -0.01em; }
+  .cc-scope .window .wq em { font-style: italic; color: var(--wit); }
+  .cc-scope .window .wq .w > span { transition-duration: 1.3s; }
+
+  /* ---------- CHAOS IN JE HOOFD > RUST MET IMPRESSED (scroll) ---------- */
+  .cc-scope .calm { position: relative; height: 280vh; background: var(--wit); }
+  .cc-scope .calm-sticky { position: sticky; top: var(--stick, 0px); height: calc(100vh - var(--stick, 0px)); overflow: hidden; }
+  .cc-scope .calm-head { position: absolute; z-index: 5; left: 0; right: 0; top: clamp(48px, 9vh, 96px); text-align: center; padding: 0 var(--edge); pointer-events: none; }
+  .cc-scope .calm-head .h2 { margin: 0 auto; max-width: 20ch; }
+  .cc-scope .calm-head .ttl { position: absolute; left: 0; right: 0; transition: opacity .8s var(--ease-out), transform .8s var(--ease-out), filter .8s; }
+  .cc-scope .calm-head .ttl.b { opacity: 0; transform: translateY(20px); filter: blur(6px); }
+  .cc-scope .calm.done .calm-head .ttl.a { opacity: 0; transform: translateY(-20px); filter: blur(6px); }
+  .cc-scope .calm.done .calm-head .ttl.b { opacity: 1; transform: none; filter: none; }
+  .cc-scope .chip { position: absolute; left: 50%; top: 47%; z-index: 2; white-space: nowrap; font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--bruin); padding: 10px 18px; background: var(--wit); border: 1px solid var(--line); will-change: transform, opacity; }
+  .cc-scope .chip.k { background: linear-gradient(rgba(217,184,168,.35), rgba(217,184,168,.35)), var(--wit); }
+  .cc-scope .chip.t { background: linear-gradient(rgba(184,167,150,.3), rgba(184,167,150,.3)), var(--wit); }
+  .cc-scope .rest { position: absolute; left: 50%; top: 56%; z-index: 3; width: min(420px, 82vw); transform: translate(-50%, -50%); display: grid; gap: 12px; }
+  .cc-scope .rest-card { display: flex; align-items: center; gap: 16px; padding: 18px 22px; background: var(--wit); border: 1px solid var(--line); opacity: 0; transform: translateY(30px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+  .cc-scope .rest-card .ck { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--bruin); display: grid; place-items: center; font-size: .8rem; }
+  .cc-scope .rest-card b { font-family: var(--serif); font-weight: 500; font-size: clamp(1.2rem, 1.8vw, 1.45rem); }
+  .cc-scope .calm.done .rest-card { opacity: 1; transform: none; }
+  .cc-scope .calm.done .rest-card:nth-child(2) { transition-delay: .12s; }
+  .cc-scope .calm.done .rest-card:nth-child(3) { transition-delay: .24s; }
+  .cc-scope .calm.done .rest-card:nth-child(4) { transition-delay: .36s; }
+  .cc-scope .rest .btn { justify-self: center; margin-top: 18px; opacity: 0; transition: opacity .9s var(--ease-out) .5s, background .3s, border-color .3s, transform .3s; }
+  .cc-scope .calm.done .rest .btn { opacity: 1; }
+  .cc-scope .calm:not(.done) .rest { pointer-events: none; }
+  @media (max-width: 719px) {
+    .cc-scope .chip { font-size: .86rem; padding: 8px 12px; top: 42%; }
+    .cc-scope .calm-head { top: 72px; }
+    .cc-scope .calm-head .h2 { font-size: 1.9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cc-scope .calm { height: auto; }
+    .cc-scope .calm-sticky { position: relative; height: auto; min-height: 640px; }
+    .cc-scope .chip { display: none; }
+  }
+
+  /* ---------- AGENDA ---------- */
+  .cc-scope .agenda { border-top: 1px solid var(--line-strong); }
+  .cc-scope .ev { position: relative; display: grid; grid-template-columns: 140px 1fr auto; gap: clamp(20px, 4vw, 56px); align-items: center; padding: clamp(26px, 3vw, 40px) clamp(8px, 2vw, 28px); border-bottom: 1px solid var(--line-strong); isolation: isolate; text-decoration: none !important; color: var(--bruin); }
+  .cc-scope .ev.g { --c: var(--g); } .cc-scope .ev.p { --c: var(--p); }
+  .cc-scope .ev::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--creme); transform: scaleY(0); transform-origin: 50% 100%; transition: transform .7s var(--ease-out); }
+  .cc-scope .ev:hover::before { transform: scaleY(1); }
+  .cc-scope .ev .date { font-family: var(--serif); line-height: .9; transition: transform .7s var(--ease-out); }
+  .cc-scope .ev:hover .date { transform: translateX(8px); }
+  .cc-scope .ev .d { display: block; font-size: clamp(3.2rem, 5vw, 4.4rem); }
+  .cc-scope .ev .m { display: block; font-family: var(--sans); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; margin-top: 8px; color: var(--ink-soft); }
+  .cc-scope .ev .m.dd { margin-top: 4px; }
+  .cc-scope .ev .brand-tag { display: inline-block; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--c); border-radius: 2px; color: var(--bruin); }
+  .cc-scope .ev h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; margin-top: 12px; }
+  .cc-scope .ev .info { margin-top: 8px; font-size: .95rem; color: var(--ink-soft); }
+  .cc-scope .ev .act { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 12px; }
+  .cc-scope .ev .act .arr { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid var(--bruin); border-radius: 50%; letter-spacing: 0; transition: background .4s, color .4s, transform .6s var(--ease-out); }
+  .cc-scope .ev:hover .act .arr { background: var(--bruin); border-color: var(--bruin); color: var(--wit); transform: translateX(6px); }
+  @media (max-width: 759px) {
+    .cc-scope .ev { grid-template-columns: 84px 1fr; }
+    .cc-scope .ev .d { font-size: 2.8rem; }
+    .cc-scope .ev .m { font-size: .6rem; letter-spacing: .08em; }
+    .cc-scope .ev .act { grid-column: 2; }
+    .cc-scope .ev .act .arr { width: 38px; height: 38px; }
+  }
+  .cc-scope .ev.is-armed { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+  .cc-scope .ev.is-armed.is-in { opacity: 1; transform: none; }
+  .cc-scope .ev.is-armed:nth-child(2) { transition-delay: .1s; }
+  .cc-scope .ev.is-armed:nth-child(3) { transition-delay: .2s; }
+
+  /* ---------- KIEZER ---------- */
+  .cc-scope .switch { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-strong); background: var(--wit); margin-bottom: clamp(36px, 5vw, 56px); }
+  .cc-scope .switch .knob { position: absolute; top: 0; bottom: 0; left: 0; width: 50%; background: var(--bruin); transition: transform .7s var(--ease-out), background .5s var(--ease); }
+  .cc-scope .switch[data-side="paper"] .knob { transform: translateX(100%); }
+  .cc-scope .switch button { position: relative; z-index: 1; padding: 15px clamp(18px, 3vw, 36px); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: var(--bruin); transition: color .5s var(--ease); white-space: nowrap; }
+  .cc-scope .switch button[aria-selected="true"] { color: var(--wit); }
+  
+  .cc-scope .chooser { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
+  @media (min-width: 960px) { .cc-scope .chooser { grid-template-columns: 1fr 1fr; } }
+  .cc-scope .problems { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); }
+  .cc-scope .problems[hidden] { display: none; }
+  .cc-scope .prob { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; padding: 26px 8px 26px 0; border-bottom: 1px solid var(--line-strong) !important; background: transparent !important; font-family: var(--serif); font-size: clamp(1.2rem, 1.8vw, 1.42rem); line-height: 1.35; color: var(--bruin); opacity: 0; transform: translateY(16px); transition: color .5s var(--ease), padding .6s var(--ease-out); }
+  .cc-scope .problems.show .prob { opacity: 1; transform: none; transition: opacity .8s var(--ease-out), transform .8s var(--ease-out), color .5s var(--ease), padding .6s var(--ease-out); }
+  .cc-scope .problems.show .prob:nth-child(2) { transition-delay: .07s; }
+  .cc-scope .problems.show .prob:nth-child(3) { transition-delay: .14s; }
+  .cc-scope .problems.show .prob:nth-child(4) { transition-delay: .21s; }
+  .cc-scope .prob::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: 0 50%; transition: transform .8s var(--ease-out); }
+  .cc-scope .prob:hover::before, .cc-scope .prob.is-active::before { transform: scaleX(1); }
+  .cc-scope .prob .q { font-style: italic; }
+  .cc-scope .prob .pa { flex-shrink: 0; font-family: var(--sans); font-size: 1rem; opacity: .45; transition: transform .6s var(--ease-out), opacity .4s; }
+  .cc-scope .prob:hover .pa { transform: translateX(5px); opacity: 1; }
+  .cc-scope .prob:hover, .cc-scope .prob.is-active { padding-left: 14px; }
+  .cc-scope .problems[data-side="growth"] .prob.is-active { color: var(--bruin); }
+  .cc-scope .problems[data-side="paper"] .prob.is-active { color: var(--bruin); }
+  .cc-scope .problems[data-side="growth"] .prob::before { background: var(--g); height: 2px; }
+  .cc-scope .problems[data-side="paper"] .prob::before { background: var(--p); height: 2px; }
+  .cc-scope .prob.is-active .pa { opacity: 1; }
+  @media (max-width: 959px) { .cc-scope .prob.is-active .pa { transform: rotate(90deg); } }
+
+  .cc-scope .answer { position: relative; padding: clamp(30px, 4vw, 52px); overflow: hidden; transition: background-color .6s var(--ease); }
+  @media (min-width: 960px) { .cc-scope .answer { position: sticky; top: calc(var(--stick, 0px) + 40px); min-height: 440px; } }
+  .cc-scope .answer::before { content: ""; position: absolute; inset: 0; background-image: var(--paper-tex); background-size: cover; opacity: .18; mix-blend-mode: multiply; pointer-events: none; }
+  .cc-scope .answer.growth { background: linear-gradient(rgba(217,184,168,.3), rgba(217,184,168,.3)), var(--wit); --c: var(--g); }
+  .cc-scope .answer::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--c); }
+  .cc-scope .answer.paper { --c: var(--p); background: linear-gradient(rgba(184,167,150,.24), rgba(184,167,150,.24)), var(--wit); }
+  .cc-scope .answer .ans-inner { position: relative; z-index: 1; animation: ansIn .8s var(--ease-out) both; }
+  @keyframes ansIn { from { opacity: 0; transform: translateY(20px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+  .cc-scope .answer .for { font-family: var(--serif); font-style: italic; font-size: 1.15rem; }
+  .cc-scope .answer .txt, .cc-scope .answer .alt, .cc-scope .answer .empty-sub { color: var(--bruin) !important; }
+  .cc-scope .answer.paper .for { color: var(--bruin); }
+  .cc-scope .answer h3 { font-size: clamp(2rem, 3.1vw, 2.6rem); line-height: 1.06; margin-top: 10px; }
+  .cc-scope .answer .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .cc-scope .answer .meta span { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border: 1px solid rgba(84,66,58,.35); border-radius: 2px; }
+  .cc-scope .answer .txt { margin-top: 24px; font-size: 1.02rem; line-height: 1.75; max-width: 46ch; color: var(--ink-soft); }
+  .cc-scope .answer .btn { margin-top: 32px; }
+  .cc-scope .answer .alt { margin-top: 18px; font-size: .9rem; color: var(--ink-soft); }
+  .cc-scope .answer .empty { font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.25; max-width: 18ch; }
+  .cc-scope .answer.growth .empty { color: var(--bruin); }
+  .cc-scope .answer.paper .empty { color: var(--bruin); }
+  .cc-scope .answer .empty-sub { margin-top: 14px; font-size: .95rem; color: var(--ink-soft); }
+  .cc-scope .ans-ghost { position: absolute; right: -4%; bottom: -16%; font-family: var(--serif); font-style: italic; font-size: clamp(10rem, 20vw, 17rem); line-height: 1; color: var(--bruin); opacity: .09; pointer-events: none; user-select: none; }
+
+  /* ---------- REVIEWS ---------- */
+  .cc-scope .past-carousel { position: relative; overflow: hidden; }
+  .cc-scope .past-track { display: flex; transition: transform 1s var(--ease-out); }
+  .cc-scope .past-card { flex: 0 0 100%; display: grid; gap: clamp(28px, 5vw, 72px); align-items: center; padding: 6px clamp(6px, 2vw, 20px) 10px; }
+  @media (min-width: 900px) { .cc-scope .past-card { grid-template-columns: .7fr 1.3fr; } }
+  .cc-scope .taped { position: relative; max-width: 300px; margin: 0 auto; }
+  .cc-scope .taped .frame { aspect-ratio: 3 / 4; overflow: hidden; border-radius: 1000px 1000px 0 0; }
+  .cc-scope .taped img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-scope .past-card blockquote { margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.95rem); line-height: 1.32; color: var(--bruin); }
+  .cc-scope .past-card cite { display: block; margin-top: 24px; font-style: normal; font-weight: 600; font-size: .95rem; color: var(--bruin); }
+  .cc-scope .past-card cite span { display: block; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+  .cc-scope .past-controls { display: flex; align-items: center; gap: 18px; margin-top: 40px; }
+  .cc-scope .past-arrow { width: 48px; height: 48px; border-radius: 2px; border: 1px solid var(--line-strong) !important; font-size: 1.4rem; line-height: 1; color: var(--bruin); background: transparent !important; transition: background .4s, color .4s; }
+  .cc-scope .past-arrow:hover { background: var(--bruin) !important; color: var(--wit); }
+  .cc-scope .past-dots { display: flex; gap: 8px; }
+  .cc-scope .past-dot { width: 8px; height: 8px; border-radius: 0; background: var(--line-strong) !important; transition: width .5s var(--ease-out), background .4s; }
+  .cc-scope .past-dot.is-active { width: 28px; background: var(--bruin) !important; }
+
+
+  /* ---------- STARTERSGIDS ---------- */
+  .cc-scope .gids { background-color: var(--wit); background-image: linear-gradient(rgba(250,247,242,.5), rgba(250,247,242,.5)), var(--paper-tex); background-size: cover; }
+  .cc-scope .guide-card { display: grid; gap: clamp(28px, 4vw, 72px); align-items: center; }
+  @media (min-width: 900px) { .cc-scope .guide-card { grid-template-columns: 1fr 1fr; } }
+  .cc-scope .guide-card .for { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--bruin); }
+  .cc-scope .guide-card h2 { margin-top: 8px; }
+  
+  .cc-scope .gc-form { display: grid; gap: 14px; background: var(--wit); padding: clamp(24px, 3.5vw, 44px); border: 1px solid var(--line); border-top: 4px solid var(--p); }
+  .cc-scope .gc-row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+  .cc-scope .gc-form label { display: grid; gap: 6px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .cc-scope .gc-form input { font: inherit; font-size: 1rem; letter-spacing: normal; text-transform: none; color: var(--bruin); padding: 13px 0; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0; background: transparent; width: 100%; transition: border-color .3s; }
+  .cc-scope .gc-form input:focus { outline: none; border-bottom-color: var(--bruin); }
+  .cc-scope .gc-form .btn { justify-self: start; margin-top: 10px; }
+  .cc-scope .gc-note { font-size: .82rem; color: var(--ink-soft); }
+
+  /* bolletje dat zich inkleurt (van onder naar boven) bij openklappen */
+  .cc-scope .ico { position: relative; flex-shrink: 0; width: 14px; height: 14px; border: 1px solid var(--bruin); border-radius: 50%; overflow: hidden; display: inline-block; transition: transform .5s var(--ease-out); }
+  .cc-scope .ico i { position: absolute; inset: 0; background: var(--bruin); transform: scaleY(0); transform-origin: 50% 100%; transition: transform .7s var(--ease-out); }
+  .cc-scope summary:hover .ico, .cc-scope .toggle:hover .ico { transform: scale(1.15); }
+  .cc-scope details[open] .ico i, .cc-scope .path.open .toggle .ico i { transform: scaleY(1); }
+  /* ---------- FAQ ---------- */
+  .cc-scope .faq-grid { display: grid; gap: clamp(36px, 5vw, 90px); }
+  @media (min-width: 960px) { .cc-scope .faq-grid { grid-template-columns: .85fr 1.15fr; } }
+  .cc-scope .faq-photo { margin-top: 48px; aspect-ratio: 3 / 4; overflow: hidden; max-width: 320px; border-radius: 1000px 1000px 0 0; }
+  .cc-scope .faq-photo img { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 959px) { .cc-scope .faq-photo { display: none; } }
+  .cc-scope .faq-item { border-bottom: 1px solid var(--line-strong); }
+  .cc-scope .faq { border-top: 1px solid var(--line-strong); }
+  .cc-scope .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; font-family: var(--serif); font-size: clamp(1.25rem, 1.9vw, 1.45rem); line-height: 1.3; color: var(--bruin); transition: color .4s; }
+  .cc-scope .faq-item summary:hover { color: var(--taupe); }
+  .cc-scope .faq-item summary::-webkit-details-marker { display: none; }
+  .cc-scope .faq-item p { padding: 0 0 26px; color: var(--ink-soft); max-width: 58ch; animation: fadeUp .6s var(--ease-out) both; }
+
+  .cc-scope .strip { position: relative; height: clamp(360px, 50vw, 640px); overflow: hidden; }
+  .cc-scope .strip video { position: absolute; left: 0; top: -12%; width: 100%; height: 124%; object-fit: cover; object-position: center 55%; will-change: transform; }
+  .cc-scope .strip img { position: absolute; left: 0; top: -15%; width: 100%; height: 130%; object-fit: cover; will-change: transform; }
+
+  /* ---------- SLOT ---------- */
+  .cc-scope .slot { background: var(--creme); }
+  .cc-scope .final { max-width: 860px; margin: 0 auto; text-align: center; }
+  .cc-scope .final .h2 { max-width: 20ch; margin: 0 auto; font-size: clamp(2.3rem, 5vw, 3.8rem); }
+  .cc-scope .final .lead { margin: 26px auto 0; }
+  .cc-scope .final .actions { margin-top: 42px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .cc-scope .final .mail { font-size: .92rem; color: var(--ink-soft); }
+  .cc-scope .final .mail a { color: var(--bruin); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .cc-scope .slot-arch { width: clamp(120px, 14vw, 170px); aspect-ratio: 3 / 4; margin: 0 auto 40px; border-radius: 1000px 1000px 0 0; overflow: hidden; }
+  .cc-scope .slot-arch img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- BEWEGING ---------- */
+  .cc-scope .reveal.is-armed { opacity: 0; transform: translateY(34px); transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out); }
+  .cc-scope .reveal.is-armed.is-in { opacity: 1; transform: none; }
+  .cc-scope .wipe.is-armed { clip-path: inset(100% 0 0 0); transition: clip-path 1.3s cubic-bezier(.77,0,.18,1); }
+  .cc-scope .wipe.is-armed.is-in { clip-path: inset(0 0 0 0); }
+  .cc-scope .wipe.is-armed img { transform: scale(1.2); transition: transform 2.2s var(--ease-out); }
+  .cc-scope .wipe.is-armed.is-in img { transform: scale(1); }
+  .cc-scope .path.is-armed { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(.77,0,.18,1); }
+  .cc-scope .path.paper.is-armed { transition-delay: .15s; }
+  .cc-scope .path.is-armed.is-in { clip-path: inset(0 0 0 0); }
+  .cc-scope .path.is-armed .body > * { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+  .cc-scope .path.is-armed.is-in .body > * { opacity: 1; transform: none; }
+  .cc-scope .path.is-armed.is-in .body > :nth-child(2) { transition-delay: .1s; }
+  .cc-scope .path.is-armed.is-in .body > :nth-child(3) { transition-delay: .18s; }
+  .cc-scope .path.is-armed.is-in .body > :nth-child(n+4) { transition-delay: .26s; }
+  .cc-scope .split-words .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+  .cc-scope .split-words .w > span { display: inline-block; transform: translateY(110%); transition: transform 1.1s var(--ease-out); }
+  .cc-scope .split-words.is-in .w > span { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .cc-scope *, .cc-scope *::before, .cc-scope *::after { animation: none !important; transition: none !important; }
+    .cc-scope .hero::before { display: none; }
+    .cc-scope .sig { clip-path: none; }
+    .cc-scope .problems .prob { opacity: 1; transform: none; }
+    .cc-scope .opener { clip-path: none; }
+    .cc-scope .opener img { transform: none; }
+    .cc-scope .opener-quote { opacity: 1; }
+    .cc-scope .split-words .w > span { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cc-scope">
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-frame"><div class="hero-media" data-parallax="0.16"><div class="hero-rot"><img src="media/hero-zetel.jpg" alt="Saloua van bovenaf op een witte ronde zetel, aan het werk op haar laptop"></div></div></div>
+    <div class="hero-in">
+      <h1 class="hero-title">Jouw trouwbusiness,<span class="br"></span> slimmer online en op <em>papier</em>.</h1>
+      <p class="hero-sub">Met <strong>Impressed Growth</strong> help ik trouwleveranciers tijd winnen met content en marketing, met AI. Met <strong>Impressed Paper</strong> help ik grafisch vormgevers in de trouwsector starten met kaarten en drukwerk, zonder dure fouten.</p>
+      <div class="hero-actions"><a class="btn" href="/contact">Plan een kennismaking <span class="arr">→</span></a></div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============ 2 PADEN ============ -->
+  <section class="paths-sec" id="paden" aria-label="Impressed Growth en Impressed Paper">
+    <div class="paths">
+      <div class="path growth" data-side="growth">
+        <div class="body">
+          <h2 class="brand">Impressed <em>Growth</em></h2>
+          <p class="for">Voor trouwleveranciers</p>
+          <p class="who">Voor fotografen, floristen, planners en andere trouwleveranciers die te veel tijd verliezen aan content en marketing. Met AI werk je slimmer, niet harder.</p>
+          <p class="short">Content, AI en marketing.</p>
+          <button type="button" class="toggle" aria-expanded="false">Ontdek Growth <span class="ico" aria-hidden="true"><i></i></span></button>
+          <div class="more"><div>
+            <ul><li><b>Content Studio</b><span>Elke maand</span></li><li><b>Je doelen voor 2027</b><span>16 nov</span></li><li><b>Strategiecall 1-op-1</b><span>90 min</span></li></ul>
+            <a class="go link" href="#kies" data-side="growth">Wat past bij jou? <span class="arr">→</span></a>
+          </div></div>
+        </div>
+      </div>
+      <div class="path paper" data-side="paper">
+        <div class="body">
+          <h2 class="brand">Impressed <em>Paper</em></h2>
+          <p class="for">Voor grafisch vormgevers in de trouwsector</p>
+          <p class="who">Voor vormgevers die trouwkaarten willen aanbieden of zelf willen printen. Welk papier, welke printer, welke drukker: ik deel wat ik in 8 jaar leerde.</p>
+          <p class="short">Trouwkaarten, papier en printen.</p>
+          <button type="button" class="toggle" aria-expanded="false">Ontdek Paper <span class="ico" aria-hidden="true"><i></i></span></button>
+          <div class="more"><div>
+            <ul><li><b>Masterclass</b><span>29 nov</span></li><li><b>E-book</b><span>Eigen tempo</span></li><li><b>Startersgids</b><span>Gratis</span></li><li><b>Drukwerk op maat</b><span>Op aanvraag</span></li></ul>
+            <a class="go link" href="#kies" data-side="paper">Wat past bij jou? <span class="arr">→</span></a>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPENDE REGEL ============ -->
+  <div class="typeline">
+    <p class="tl-text"><span class="tl-a">Impressed voor</span> <span class="tl-b"><span class="tw" data-words="content:g|marketing:g|AI:g|community:g|de juiste papiersoorten:p|trouwkaarten:p|drukwerk op maat:p">content</span><span class="caret" aria-hidden="true"></span></span></p>
+  </div>
+
+  <!-- ============ CHAOS > RUST (scrolleffect) ============ -->
+  <section class="calm" id="rust" aria-label="Van chaos in je hoofd naar rust">
+    <div class="calm-sticky">
+      <div class="calm-head">
+        <div class="ttl a"><h2 class="h2">Zo voelt je hoofd <em>nu</em>?</h2></div>
+        <div class="ttl b"><h2 class="h2">En zo voelt het met <em>Impressed</em>.</h2></div>
+      </div>
+      <div class="chips" aria-hidden="true">
+        <span class="chip">Wat post ik vandaag?</span>
+        <span class="chip">ChatGPT alles opnieuw uitleggen</span>
+        <span class="chip">Welk papier kies ik?</span>
+        <span class="chip">Zondagavond weer content plannen</span>
+        <span class="chip">Waarom komen er geen aanvragen?</span>
+        <span class="chip">Printer kopen of niet?</span>
+        <span class="chip">Nog een reel filmen</span>
+        <span class="chip">Te laat gepost</span>
+      </div>
+      <div class="rest">
+        <div class="rest-card"><span class="ck">✓</span><b>1 helder plan</b></div>
+        <div class="rest-card"><span class="ck">✓</span><b>Je content staat klaar</b></div>
+        <div class="rest-card"><span class="ck">✓</span><b>Kaarten zonder dure fouten</b></div>
+        <div class="rest-card"><span class="ck">✓</span><b>Tijd voor wat telt</b></div>
+        <a class="btn" href="/contact">Plan een kennismaking <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WIE BEN IK ============ -->
+  <section class="section" id="overmij">
+    <div class="wrap about">
+      <div class="about-photo wipe"><img src="media/impressed-muur.jpg" alt="Saloua van achter, hangt een blad met IMPRESSED tegen de muur" data-parallax="-0.08"></div>
+      <div class="reveal">
+        <h2 class="h2 split-words">Hi, ik ben <em>Saloua</em></h2>
+        <div class="copy">
+          <p>Ik zit al meer dan 8 jaar in de drukwerkwereld. Impressed Paper begon met trouw- en geboortekaarten en groeide uit tot drukwerk op maat en masterclasses.</p>
+          <p>Impressed Growth groeide uit mijn werk als contentstrateeg. Eerst 1-op-1, nu vooral aan tafel met kleine groepen ondernemers die precies hetzelfde meemaken als jij.</p>
+          <p>Wat ik onderweg leerde? <strong>Tijd is kostbaar.</strong> En de meeste ondernemers verliezen er veel te veel aan door alles alleen uit te zoeken. Dus hou ik het praktisch: concrete tips, een plan waar je morgen al mee verder kan, en af en toe een croissant erbij.</p>
+        </div>
+        <span class="sig" aria-hidden="true">Saloua</span>
+        <div class="stats">
+          <div class="stat"><span class="big"><span class="count" data-to="60">60</span>+</span><p class="k">ondernemers begeleid</p></div>
+          <div class="stat"><span class="big"><span class="count" data-to="8">8</span>+</span><p class="k">jaar in drukwerk</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- vast venster: de foto blijft staan, de pagina schuift erover -->
+  <div class="window">
+    <img class="wimg" src="media/bureau-bovenaf.jpg" alt="Saloua van bovenaf aan een ronde tafel met laptop, papieren en een gouden pen">
+    <div class="wq"><p class="split-words">Niet harder werken. <em>Slimmer</em> werken.</p></div>
+  </div>
+
+  <!-- ============ AGENDA ============ -->
+  <section class="section" id="agenda">
+    <div class="wrap">
+      <div class="sec-head split reveal">
+        <h2 class="h2 split-words">Komende <em>workshops</em></h2>
+        <p class="lead">Kleine groepen, echte gesprekken. Je gaat naar huis met iets dat je meteen gebruikt.</p>
+      </div>
+      <div class="agenda">
+        <a class="ev g" href="https://impressedpaper.com/product/create-connect-je-doelen-voor-2027-bepalen/">
+          <div class="date"><span class="d">16</span><span class="m">nov</span><span class="m dd">maandag</span></div>
+          <div>
+            <span class="brand-tag">Impressed Growth</span>
+            <h3>Create &amp; Connect: Je doelen voor 2027</h3>
+            <p class="info">Antwerpen · voormiddag · €65</p>
+          </div>
+          <span class="act">Schrijf je in <span class="arr">→</span></span>
+        </a>
+        <a class="ev p" href="https://impressedpaper.com/masterclass/">
+          <div class="date"><span class="d">29</span><span class="m">nov</span><span class="m dd">zondag</span></div>
+          <div>
+            <span class="brand-tag">Impressed Paper</span>
+            <h3>Masterclass: Kaarten maken als een pro</h3>
+            <p class="info">Online · €85 · incl. samplepakket</p>
+          </div>
+          <span class="act">Bekijk de masterclass <span class="arr">→</span></span>
+        </a>
+        <a class="ev g" href="https://impressedpaper.com/create-connect-contentstudio/">
+          <div class="date"><span class="d">14</span><span class="m">dec</span><span class="m dd">maandag</span></div>
+          <div>
+            <span class="brand-tag">Impressed Growth</span>
+            <h3>Create &amp; Connect: Content Studio</h3>
+            <p class="info">Maandelijks in Vilvoorde · 9u30 tot 12u30 · max 6 ondernemers · €85 per sessie, met een beurtenkaart vanaf €70 per keer</p>
+          </div>
+          <span class="act">Bekijk de data <span class="arr">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KIEZER ============ -->
+  <section class="section creme" id="kies">
+    <div class="wrap">
+      <div class="sec-head split reveal">
+        <h2 class="h2 split-words">Waar loop jij nu <em>tegenaan</em>?</h2>
+        <p class="lead">Kies wat je herkent en je ziet meteen waar je start.</p>
+      </div>
+
+      <div class="switch reveal" role="tablist" data-side="growth">
+        <span class="knob" aria-hidden="true"></span>
+        <button type="button" role="tab" aria-selected="true" data-side="growth">Impressed Growth</button>
+        <button type="button" role="tab" aria-selected="false" data-side="paper">Impressed Paper</button>
+      </div>
+
+      <div class="chooser">
+        <div class="pick-col">
+          <div class="problems" data-side="growth">
+            <button type="button" class="prob" data-ans="g1"><span class="q">"Ik steek zoveel tijd in content en weet nog altijd niet wat werkt."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="g2"><span class="q">"Ik post wel, maar er komen te weinig koppels uit."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="g3"><span class="q">"In januari vol goesting, in februari is alles weer weg."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="g4"><span class="q">"Ik wil eerst eens horen of jij mij kan helpen."</span><span class="pa">→</span></button>
+          </div>
+          <div class="problems" data-side="paper" hidden>
+            <button type="button" class="prob" data-ans="p1"><span class="q">"Ik wil trouwkaarten zelf printen, maar weet niet zo goed hoe."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="p2"><span class="q">"Ik wil trouwkaarten aanbieden, zonder dure fouten."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="p3"><span class="q">"Ik leer liever in mijn eigen tempo."</span><span class="pa">→</span></button>
+            <button type="button" class="prob" data-ans="p4"><span class="q">"Ik ontwerp graag, het drukwerk geef ik liever uit handen."</span><span class="pa">→</span></button>
+          </div>
+        </div>
+        <div class="answer growth" aria-live="polite">
+          <div class="ans-inner"></div>
+          <span class="ans-ghost" aria-hidden="true">G</span>
+        </div>
+      </div>
+    </div>
+
+    <template id="ans-g1">
+      <p class="for">Dan start je hier</p>
+      <h3>Create &amp; Connect: Content Studio</h3>
+      <div class="meta"><span>Elke maand</span><span>Volgende: 14 dec</span><span>Max 6 ondernemers</span></div>
+      <p class="txt">1 maandagvoormiddag per maand aan tafel in Vilvoorde. Eerst een korte focus op 1 onderwerp, daarna maak je je posts, krijg je feedback en plannen we alles in. Je gaat naar huis met je content klaar voor de volgende maand.</p>
+      <a class="btn" href="https://impressedpaper.com/create-connect-contentstudio/">Reserveer je plek <span class="arr">→</span></a>
+    </template>
+    <template id="ans-g2">
+      <p class="for">Dan start je hier</p>
+      <h3>Strategiecall 1-op-1</h3>
+      <div class="meta"><span>90 minuten</span><span>€127</span><span>Incl. actieplan</span></div>
+      <p class="txt">In 90 minuten gaat het alleen over jouw zaak. We bekijken waarom je posts geen aanvragen opleveren, kiezen samen wat nu echt telt en schrappen de rest. Je gaat naar huis met een helder plan, plus een uitgeschreven actieplan in je mailbox. No bs, wel focus.</p>
+      <a class="btn" href="/contact">Plan je strategiecall <span class="arr">→</span></a>
+    </template>
+    <template id="ans-g3">
+      <p class="for">Dan start je hier</p>
+      <h3>Create &amp; Connect: Je doelen voor 2027</h3>
+      <div class="meta"><span>16 nov · Antwerpen</span><span>Voormiddag</span><span>€65</span></div>
+      <p class="txt">Geen lijst van 20 doelen die je in januari al vergeet. Wel 2 of 3 die haalbaar voelen, samen bepaald, met een eerste stap om meteen te starten. Net op tijd voor het nieuwe trouwseizoen.</p>
+      <a class="btn" href="https://impressedpaper.com/product/create-connect-je-doelen-voor-2027-bepalen/">Schrijf je in <span class="arr">→</span></a>
+    </template>
+    <template id="ans-g4">
+      <p class="for">Dan start je hier</p>
+      <h3>Een kennismaking van 20 minuten</h3>
+      <div class="meta"><span>20 minuten</span><span>Gratis</span></div>
+      <p class="txt">Jij vertelt waar je vastzit, ik zeg je recht voor de raap of en hoe ik kan helpen. Geen salespitch.</p>
+      <a class="btn" href="/contact">Plan een kennismaking <span class="arr">→</span></a>
+    </template>
+    <template id="ans-p1">
+      <p class="for">Dan start je hier</p>
+      <h3>Masterclass: Kaarten maken als een pro</h3>
+      <div class="meta"><span>Online</span><span>29 nov</span><span>€85</span><span>Incl. samplepakket</span></div>
+      <p class="txt">Zelf printen of naar een drukker, de juiste printer kiezen, welke papiersoorten bij jouw trouwkaarten passen, do's en don'ts, en waar je de beste leveranciers vindt. No gatekeeping.</p>
+      <a class="btn" href="https://impressedpaper.com/masterclass/">Bekijk de masterclass <span class="arr">→</span></a>
+    </template>
+    <template id="ans-p2">
+      <p class="for">Dan start je hier</p>
+      <h3>Gratis startersgids: Kaarten maken</h3>
+      <div class="meta"><span>Gratis</span><span>Meteen in je mailbox</span></div>
+      <p class="txt">Alles wat ik zelf had willen weten toen ik startte. Toen kocht ik meteen een grote printer. Slimme keuze? Not sure. Zo hoef jij die fouten niet meer te maken.</p>
+      <a class="btn" href="#startersgids">Stuur mij de gids <span class="arr">→</span></a>
+    </template>
+    <template id="ans-p3">
+      <p class="for">Dan start je hier</p>
+      <h3>E-book: Kaarten maken als een pro</h3>
+      <div class="meta"><span>E-book</span><span>€56</span></div>
+      <p class="txt">De basics om zelf te starten met kaarten maken, in je eigen tempo. Lees het wanneer het jou past en neem eruit wat je nu nodig hebt.</p>
+      <a class="btn" href="https://impressedpaper.com/e-book-voor-ondernemers/">Bekijk het e-book <span class="arr">→</span></a>
+    </template>
+    <template id="ans-p4">
+      <p class="for">Dan start je hier</p>
+      <h3>Drukwerk op maat</h3>
+      <div class="meta"><span>Trouw</span><span>Geboorte</span><span>Events</span></div>
+      <p class="txt">Jij ontwerpt, ik zorg dat het op het juiste papier staat. Of je geeft alles uit handen, van eerste idee tot het stuk dat je in je handen houdt.</p>
+      <a class="btn" href="mailto:info@impressedpaper.com?subject=Drukwerk%20op%20maat">Vraag je drukwerk aan <span class="arr">→</span></a>
+      <p class="alt">Of mail rechtstreeks naar info@impressedpaper.com</p>
+    </template>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section" id="proof">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="h2">In hun eigen woorden</h2>
+        <p class="lead">Wat vrouwen zeggen na een Create &amp; Connect sessie of de masterclass.</p>
+      </div>
+      <div class="past-carousel reveal" id="cncPastCarousel">
+        <div class="past-track">
+          <div class="past-card">
+            <div class="taped"><div class="frame"><img src="media/workshop-tafel.jpg" alt="Gedekte workshoptafel tijdens Create &amp; Connect in Vilvoorde"></div></div>
+            <div>
+              <blockquote>De workshop was super interessant, ik heb echt verschillende inzichten gekregen over content creatie en ook hoe ik met AI kan omgaan om het makkelijker te maken. Dankzij de workshop heb ik echt inspiratie genoeg om de ideeën uit te werken.</blockquote>
+              <cite>Calm Touch <span>Massagetherapeut · Create &amp; Connect</span></cite>
+            </div>
+          </div>
+          <div class="past-card">
+            <div class="taped"><div class="frame"><img src="media/wassegel.jpg" alt="Stationery met wassegel"></div></div>
+            <div>
+              <blockquote>Ik vond het echt een heel fijne sessie! Vooral om te weten waar ik dat handgeschept papier kon kopen, omdat ik het vaak heel duur vond online. Ik heb geprobeerd om dat eens te embossen en vond het nog mooier! You did a very great job!</blockquote>
+              <cite>Gohart <span>Masterclass Kaarten maken als een pro</span></cite>
+            </div>
+          </div>
+          <div class="past-card">
+            <div class="taped"><div class="frame"><img src="media/postits.jpg" alt="Post-its op de muur tijdens Create &amp; Connect"></div></div>
+            <div>
+              <blockquote>De workshop van gisteren was super leerrijk, ik heb heel wat tips en tools gekregen om te kunnen evolueren op vlak van content creatie. Altijd tof om andere ondernemers te ontmoeten en nieuwe connecties te maken.</blockquote>
+              <cite>Hanae <span>Diëtiste &amp; sportcoach · Create &amp; Connect</span></cite>
+            </div>
+          </div>
+          <div class="past-card">
+            <div class="taped"><div class="frame"><img src="media/kraft-uitnodiging.jpg" alt="Trouwuitnodiging op kraftpapier met gedroogde bloemen" style="object-position: 70% 40%;"></div></div>
+            <div>
+              <blockquote>Ik vond het mega interessant! Super tof dat ik zoveel vragen mocht stellen en heel verhelderend over leveranciers. Want ik ging zelf al een drukkerij beginnen 😅</blockquote>
+              <cite>Illustrations by Lore <span>Masterclass Kaarten maken als een pro</span></cite>
+            </div>
+          </div>
+          <div class="past-card">
+            <div class="taped"><div class="frame"><img src="media/antwerpen-sfeer.jpg" alt="Sfeerbeeld van de Create &amp; Connect sessie in Antwerpen"></div></div>
+            <div>
+              <blockquote>De workshop was alweer heeel erg interessant. Ik vind de manier waarop je dingen uitlegt heel inspirerend en verlaat elke workshop weer met 10+ nieuwe ideeën.</blockquote>
+              <cite>Sayfourah Studio <span>Lettering &amp; stationery artist · Create &amp; Connect</span></cite>
+            </div>
+          </div>
+        </div>
+        <div class="past-controls">
+          <button type="button" class="past-arrow" id="cncPastPrev" aria-label="Vorige review">&#8249;</button>
+          <div class="past-dots" id="cncPastDots">
+            <button type="button" class="past-dot is-active" data-idx="0" aria-label="Review 1"></button>
+            <button type="button" class="past-dot" data-idx="1" aria-label="Review 2"></button>
+            <button type="button" class="past-dot" data-idx="2" aria-label="Review 3"></button>
+            <button type="button" class="past-dot" data-idx="3" aria-label="Review 4"></button>
+            <button type="button" class="past-dot" data-idx="4" aria-label="Review 5"></button>
+          </div>
+          <button type="button" class="past-arrow" id="cncPastNext" aria-label="Volgende review">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STARTERSGIDS ============ -->
+  <section class="section gids" id="startersgids">
+    <div class="wrap">
+      <div class="guide-card reveal">
+        <div>
+          <p class="for">Gratis voor vormgevers die starten</p>
+          <h2 class="h2">Startersgids: <em>Kaarten maken</em></h2>
+          <p class="lead">Voorkom dure fouten bij papier, drukwerk en ontwerp. Alles wat ik zelf had willen weten toen ik startte, in 1 gids.</p>
+        </div>
+        <!-- ActiveCampaign formulier 7: vervang dit formulier door je embedcode of zet de juiste action-URL en veldnamen -->
+        <form class="gc-form" action="#" method="post" onsubmit="return false;">
+          <div class="gc-row">
+            <label><span>Voornaam</span><input type="text" name="firstname" autocomplete="given-name" required></label>
+            <label><span>Naam</span><input type="text" name="lastname" autocomplete="family-name" required></label>
+          </div>
+          <label><span>E-mailadres</span><input type="email" name="email" autocomplete="email" required></label>
+          <button type="submit" class="btn">Stuur mij de gids <span class="arr">→</span></button>
+          <p class="gc-note">Je krijgt de gids meteen in je mailbox. Uitschrijven kan altijd.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section creme" id="faq">
+    <div class="wrap faq-grid">
+      <div class="reveal">
+        <h2 class="h2">Nog vragen?</h2>
+        <p class="lead">Staat jouw vraag er niet tussen? Mail ze gerust naar <a class="txt-link" href="mailto:info@impressedpaper.com">info@impressedpaper.com</a>, ik antwoord zelf.</p>
+        <div class="faq-photo wipe"><img src="media/telefoon.jpg" alt="Saloua van achter aan de telefoon in een lichte ruimte met witte sofa's"></div>
+      </div>
+      <div class="faq">
+        <details class="faq-item reveal">
+          <summary>Hoe verloopt een kennismaking?<span class="ico" aria-hidden="true"><i></i></span></summary>
+          <p>20 minuten, geen salespitch. Jij vertelt waar je vastzit, ik zeg je of en hoe ik kan helpen.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Ik ben niet zo techy. Kan ik wel met AI werken?<span class="ico" aria-hidden="true"><i></i></span></summary>
+          <p>Yes. We starten bij wat jij nu gebruikt, of net niet. Je hoeft geen tools te kennen, wel je eigen zaak.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Zijn de Create &amp; Connect sessies fysiek?<span class="ico" aria-hidden="true"><i></i></span></summary>
+          <p>Ja. Je zit in kleine groep aan tafel, in Vilvoorde of Antwerpen. Een klein ontbijt of een hapje en drankje zit er altijd bij.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Wat leer ik in de masterclass?<span class="ico" aria-hidden="true"><i></i></span></summary>
+          <p>Of je beter zelf print of naar een drukker gaat, welke printer je nodig hebt, welke papiersoorten bij jouw kaarten passen, en waar je de beste leveranciers vindt. Je krijgt er een samplepakket bij om meteen te testen.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Kan ik ook gewoon drukwerk laten maken?<span class="ico" aria-hidden="true"><i></i></span></summary>
+          <p>Zeker. Voor huwelijk, geboorte en events maak ik stationery op maat, van eerste idee tot het stuk dat je in je handen houdt.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip"><video src="media/workshop.mp4" poster="media/workshop-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Ondernemers aan het werk aan tafel tijdens een Create &amp; Connect sessie" data-parallax="0.1"></video></div>
+
+  <!-- ============ SLOT ============ -->
+  <section class="section slot" id="contact-cta">
+    <div class="final reveal">
+      <div class="slot-arch"><img src="media/antwerpen-sfeer.jpg" alt="Sfeerbeeld van een Create &amp; Connect sessie"></div>
+      <h2 class="h2 split-words">Klaar voor een trouwseizoen met <em>minder stress</em>?</h2>
+      <p class="lead">20 minuten om samen te kijken waar je best start, online of op papier. No pressure.</p>
+      <div class="actions">
+        <a class="btn" href="/contact">Plan een kennismaking <span class="arr">→</span></a>
+        <p class="mail">Liever eerst mailen? <a href="mailto:info@impressedpaper.com">info@impressedpaper.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var R = window.__hpRoot || document;
+    var root = R.querySelector('.cc-scope');
+    var $ = function (s, c) { return (c || root).querySelector(s); };
+    var $$ = function (s, c) { return Array.prototype.slice.call((c || root).querySelectorAll(s)); };
+
+    /* scroll: voortgangsbalk, parallax en de foto die opengaat */
+    function initScroll() {
+      var bar = $('.progress'), par = reduce ? [] : $$('[data-parallax]'), op = $('.opener'), ticking = false;
+      function update() {
+        ticking = false;
+        var vh = window.innerHeight, sy = window.scrollY || window.pageYOffset, max = document.documentElement.scrollHeight - vh;
+        if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(sy / max, 1) : 0) + ')';
+        par.forEach(function (el) {
+          var r = el.parentElement.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) return;
+          var k = parseFloat(el.getAttribute('data-parallax')) || 0;
+          el.style.transform = 'translate3d(0,' + (-(r.top + r.height / 2 - vh / 2) * k).toFixed(1) + 'px,0)';
+        });
+        if (op && !reduce) {
+          var r = op.getBoundingClientRect();
+          var p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.85)));
+          var e = 1 - Math.pow(1 - p, 2);
+          op.style.setProperty('--ix', (14 * (1 - e)).toFixed(2) + '%');
+          op.style.setProperty('--iy', (12 * (1 - e)).toFixed(2) + '%');
+          op.style.setProperty('--s', (1.25 - 0.25 * e).toFixed(3));
+          op.style.setProperty('--o', Math.max(0, (e - 0.65) / 0.35).toFixed(2));
+        }
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
+    /* typende regel: tikt een woord, wacht, wist het en tikt het volgende */
+    function initTyping() {
+      var el = $('.tw'); if (!el) return;
+      var words = (el.getAttribute('data-words') || '').split('|').map(function (w) { var p = w.split(':'); return { t: p[0], c: p[1] }; });
+      el.textContent = words[0].t;
+      if (reduce || words.length < 2) return;
+      var wi = 0, ci = words[0].t.length, deleting = true, started = false;
+      function tick() {
+        var w = words[wi];
+        if (deleting) {
+          ci--; el.textContent = w.t.slice(0, ci);
+          if (ci <= 0) { deleting = false; wi = (wi + 1) % words.length; el.classList.toggle('p', words[wi].c === 'p'); setTimeout(tick, 380); return; }
+          setTimeout(tick, 38);
+        } else {
+          var nw = words[wi]; ci++; el.textContent = nw.t.slice(0, ci);
+          if (ci >= nw.t.length) { deleting = true; setTimeout(tick, 1900); return; }
+          setTimeout(tick, 85);
+        }
+      }
+      function start() { if (started) return; started = true; setTimeout(tick, 1400); }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { start(); io.disconnect(); } });
+        io.observe(el);
+      } else { start(); }
+    }
+
+    /* titels woord per woord omhoog laten schuiven */
+    function initSplit() {
+      $$('.split-words').forEach(function (h) {
+        var i = 0;
+        (function walk(node) {
+          Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+            if (n.nodeType === 3) {
+              var frag = document.createDocumentFragment();
+              n.textContent.split(/(\s+)/).forEach(function (part) {
+                if (!part) return;
+                if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+                var w = document.createElement('span'); w.className = 'w';
+                var inner = document.createElement('span'); inner.textContent = part; inner.style.transitionDelay = (i++ * 70) + 'ms';
+                w.appendChild(inner); frag.appendChild(w);
+              });
+              node.replaceChild(frag, n);
+            } else if (n.nodeType === 1) { walk(n); }
+          });
+        })(h);
+      });
+    }
+
+
+    /* hero: titel woord per woord, tekst schuift weg bij scrollen */
+    function initHero() {
+      var h = $('.hero-title'); if (!h) return;
+      var i = 0;
+      (function walk(node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(function (part) {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+              var w = document.createElement('span'); w.className = 'w';
+              var inner = document.createElement('span'); inner.textContent = part; inner.style.animationDelay = (0.6 + i++ * 0.07).toFixed(2) + 's';
+              w.appendChild(inner); frag.appendChild(w);
+            });
+            node.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && !n.classList.contains('br')) { walk(n); }
+        });
+      })(h);
+      if (reduce) return;
+      var hin = $('.hero-in'), hero = $('.hero'), t = false;
+      window.addEventListener('scroll', function () {
+        if (t) return; t = true;
+        requestAnimationFrame(function () {
+          t = false;
+          var p = Math.min(1, Math.max(0, (window.scrollY || 0) / (hero.offsetHeight * 0.8)));
+          hin.style.transform = 'translate3d(0,' + (-p * 90).toFixed(1) + 'px,0)';
+          hin.style.opacity = (1 - p * 1.1).toFixed(2);
+        });
+      }, { passive: true });
+    }
+
+    /* paden: klik voor meer info; dichte kaarten blijven even hoog, een open kaart rekt de andere niet mee */
+    function initPaths() {
+      var paths = $$('.path');
+      function sync() {
+        var tg = paths.map(function (p) { var t = $('.toggle', p); t.style.marginTop = '0px'; return t; });
+        var tops = tg.map(function (t) { return t.offsetTop; });
+        var max = Math.max.apply(null, tops);
+        tg.forEach(function (t, i) { t.style.marginTop = (max - tops[i]) + 'px'; });
+      }
+      paths.forEach(function (p) {
+        var b = $('.toggle', p);
+        b.addEventListener('click', function () {
+          var open = !p.classList.contains('open');
+          p.classList.toggle('open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+      window.addEventListener('resize', sync);
+      sync(); setTimeout(sync, 600);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+    }
+
+
+    /* chaos in je hoofd: briefjes zweven rond en verdwijnen bij scrollen, rust komt in de plaats */
+    function initCalm() {
+      var sec = $('.calm'); if (!sec) return;
+      var chips = $$('.chip', sec), t = false, time = 0;
+      var seeds = chips.map(function (c, i) {
+        var a = (i / chips.length) * Math.PI * 2 + 0.3;
+        var rx = 26 + (i % 2) * 6, ry = 20 + (i % 3) * 4;
+        return { x: Math.cos(a) * rx, y: Math.sin(a) * ry + 4, r: ((i * 37) % 10) - 5, ph: i * 0.9, sp: 0.45 + (i % 3) * 0.1 };
+      });
+      var p = 0;
+      function draw() {
+        var mob = window.innerWidth < 720;
+        var spread = 1 - Math.min(1, Math.max(0, p / 0.45));
+        var fade = 1 - Math.min(1, Math.max(0, (p - 0.18) / 0.3));
+        chips.forEach(function (c, i) {
+          var s = seeds[i];
+          var wob = Math.sin(time * s.sp + s.ph);
+          var x = s.x * (mob ? 0.62 : 1) * (0.55 + 0.45 * spread) + wob * 0.6 * spread;
+          var y = s.y * (mob ? 0.78 : 0.85) * (0.4 + 0.6 * spread) + Math.cos(time * s.sp + s.ph) * 0.7 * spread;
+          var rot = s.r * spread + wob * 1.5 * spread;
+          var sc = 0.75 + 0.25 * fade;
+          c.style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(2) + 'vw,' + y.toFixed(2) + 'vh) rotate(' + rot.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + ')';
+          c.style.opacity = fade.toFixed(3);
+          c.style.filter = 'blur(' + ((1 - fade) * 6).toFixed(1) + 'px)';
+        });
+        sec.classList.toggle('done', p > 0.46);
+      }
+      function upd() {
+        t = false;
+        var r = sec.getBoundingClientRect(), vh = window.innerHeight, lead = vh * 0.45;
+        p = Math.max(0, Math.min(1, (lead - r.top) / (r.height - vh + lead)));
+        if (reduce) { sec.classList.add('done'); return; }
+        draw();
+      }
+      window.addEventListener('scroll', function () { if (!t) { t = true; requestAnimationFrame(upd); } }, { passive: true });
+      window.addEventListener('resize', upd);
+      upd();
+      if (!reduce) (function loop() {
+        var r = sec.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight && p < 0.5) { time += 0.016; draw(); }
+        requestAnimationFrame(loop);
+      })();
+    }
+
+    /* kiezer: probleem A geeft oplossing A */
+    var setSide = function () {};
+    function initChooser() {
+      var sw = $('.switch'), answer = $('.answer'), ghost = $('.ans-ghost');
+      var lists = $$('.problems'), home = answer.parentNode;
+      var mobile = window.matchMedia('(max-width: 959px)');
+      function show(list) { list.classList.remove('show'); void list.offsetWidth; list.classList.add('show'); }
+      function put(side, html, tpl) {
+        var n = document.createElement('div'); n.className = 'ans-inner';
+        if (tpl) n.appendChild(tpl.content.cloneNode(true)); else n.innerHTML = html;
+        answer.replaceChild(n, $('.ans-inner', answer));
+        answer.className = 'answer ' + side;
+        ghost.textContent = side === 'growth' ? 'G' : 'P';
+      }
+      function first(side) {
+        var b = $('.problems[data-side="' + side + '"] .prob');
+        if (mobile.matches) { home.appendChild(answer); answer.style.display = 'none'; put(side, ''); return; }
+        answer.style.display = ''; home.appendChild(answer);
+        b.classList.add('is-active');
+        put(side, null, R.getElementById('ans-' + b.getAttribute('data-ans')));
+      }
+      setSide = function (side) {
+        sw.setAttribute('data-side', side);
+        $$('button', sw).forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-side') === side ? 'true' : 'false'); });
+        lists.forEach(function (l) { var on = l.getAttribute('data-side') === side; l.hidden = !on; if (on) show(l); });
+        $$('.prob').forEach(function (b) { b.classList.remove('is-active'); });
+        first(side);
+      };
+      $$('button', sw).forEach(function (b) { b.addEventListener('click', function () { setSide(b.getAttribute('data-side')); }); });
+      $$('.prob').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var side = b.parentNode.getAttribute('data-side'), was = b.classList.contains('is-active');
+          $$('.prob').forEach(function (x) { x.classList.remove('is-active'); });
+          if (was && mobile.matches) { answer.style.display = 'none'; return; }
+          b.classList.add('is-active');
+          put(side, null, R.getElementById('ans-' + b.getAttribute('data-ans')));
+          answer.style.display = '';
+          if (mobile.matches) b.insertAdjacentElement('afterend', answer); else home.appendChild(answer);
+        });
+      });
+      $$('.path .go').forEach(function (g) { g.addEventListener('click', function () { setSide(g.getAttribute('data-side')); }); });
+      if (mobile.addEventListener) mobile.addEventListener('change', function () { setSide(sw.getAttribute('data-side')); });
+      setSide('growth');
+      lists.forEach(function (l) { l.classList.remove('show'); });
+      if (reduce || !('IntersectionObserver' in window)) { show(lists[0]); return; }
+      var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { lists.forEach(function (l) { if (!l.hidden) show(l); }); io.disconnect(); } }, { threshold: 0.2 });
+      io.observe($('.chooser'));
+    }
+
+    function initCarousel() {
+      var carousel = R.getElementById('cncPastCarousel'); if (!carousel) return;
+      var track = $('.past-track', carousel), nextBtn = R.getElementById('cncPastNext'), prevBtn = R.getElementById('cncPastPrev');
+      var cards = $$('.past-card', track), dots = $$('.past-dot', carousel), N = cards.length; if (!N) return;
+      track.appendChild(cards[0].cloneNode(true));
+      track.insertBefore(cards[N - 1].cloneNode(true), cards[0]);
+      var total = $$('.past-card', track).length, idx = 1, timer = null;
+      function render() { track.style.transform = 'translateX(' + (-idx * carousel.offsetWidth) + 'px)'; var real = ((idx - 1) % N + N) % N; dots.forEach(function (d, n) { d.classList.toggle('is-active', n === real); }); }
+      function jump(i) { track.style.transitionDuration = '0s'; idx = i; render(); track.offsetHeight; track.style.transitionDuration = ''; }
+      function go(i) { idx = i; render(); }
+      function restart() { if (timer) clearInterval(timer); if (!reduce) timer = setInterval(function () { go(idx + 1); }, 7000); }
+      track.addEventListener('transitionend', function (e) { if (e.propertyName && e.propertyName !== 'transform') return; if (idx === total - 1) jump(1); else if (idx === 0) jump(N); });
+      nextBtn.addEventListener('click', function () { go(idx + 1); restart(); });
+      prevBtn.addEventListener('click', function () { go(idx - 1); restart(); });
+      dots.forEach(function (d) { d.addEventListener('click', function () { go(parseInt(d.getAttribute('data-idx'), 10) + 1); restart(); }); });
+      carousel.addEventListener('mouseenter', function () { if (timer) clearInterval(timer); });
+      carousel.addEventListener('mouseleave', restart);
+      var x0 = null;
+      carousel.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); restart(); } }, { passive: true });
+      window.addEventListener('resize', function () { jump(idx); });
+      jump(1); restart();
+    }
+
+    function countUp(el) {
+      var to = parseInt(el.getAttribute('data-to'), 10) || 0, start = null, dur = to > 20 ? 2400 : 1800;
+      el.textContent = '0';
+      function step(ts) { if (!start) start = ts; var p = Math.min((ts - start) / dur, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
+      setTimeout(function () { requestAnimationFrame(step); }, 250);
+    }
+
+    function initReveal() {
+      var sig = $('.sig');
+      var els = $$('.reveal, .wipe, .path, .split-words, .ev');
+      if (reduce || !('IntersectionObserver' in window)) { if (sig) sig.classList.add('is-in'); $$('.split-words').forEach(function (h) { h.classList.add('is-in'); }); return; }
+      els.forEach(function (el) { el.classList.add('is-armed'); });
+      var sio = new IntersectionObserver(function (en) { en.forEach(function (e) { if (!e.isIntersecting) return; $$('.count', e.target).forEach(countUp); sio.unobserve(e.target); }); }, { threshold: 0.6 });
+      $$('.stats').forEach(function (st) { sio.observe(st); });
+      $$('.count').forEach(function (c) { c.textContent = '0'; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var t = en.target; t.classList.add('is-in'); io.unobserve(t);
+          (t.__rv || []).forEach(function (x) { x.classList.add('is-in'); });
+          if (sig && t.contains(sig)) sig.classList.add('is-in');
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) {
+        var target = (el.classList.contains('wipe') || el.classList.contains('path')) ? el.parentElement : el;
+        if (target !== el) { (target.__rv = target.__rv || []).push(el); }
+        io.observe(target);
+      });
+      setTimeout(function () { els.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in'); }); }, 3000);
+    }
+
+
+    /* onder de vaste WordPress-header blijven (zoals op de Content Studio-pagina) */
+    function initHeader() {
+      if (R === document) return;
+      function hdr() {
+        var b = 0;
+        document.querySelectorAll('header, .elementor-location-header, [data-elementor-type="header"], #wpadminbar').forEach(function (el) {
+          var n = el, fixed = false;
+          while (n && n !== document.body) { var p = getComputedStyle(n).position; if (p === 'fixed' || p === 'sticky') { fixed = true; break; } n = n.parentElement; }
+          if (!fixed) return;
+          var r = el.getBoundingClientRect();
+          if (r.height > 0 && r.top <= 1 && r.bottom > b) b = r.bottom;
+        });
+        root.style.setProperty('--stick', Math.round(b) + 'px');
+      }
+      hdr(); window.addEventListener('scroll', hdr, { passive: true }); window.addEventListener('resize', hdr);
+    }
+
+    function init() {
+      [initHeader, initHero, initSplit, initScroll, initTyping, initPaths, initCalm, initChooser, initCarousel, initReveal].forEach(function (f) { try { f(); } catch (e) { console.log(e); } });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+  </script>
+</div>
+</body>
+</html>

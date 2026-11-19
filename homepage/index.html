@@ -333,6 +333,14 @@
   .cc-scope .gc-form input { font: inherit; font-size: 1rem; letter-spacing: normal; text-transform: none; color: var(--bruin); padding: 13px 0; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0; background: transparent; width: 100%; transition: border-color .3s; }
   .cc-scope .gc-form input:focus { outline: none; border-bottom-color: var(--bruin); }
   .cc-scope .gc-form .btn { justify-self: start; margin-top: 10px; }
+  .cc-scope #_form_7_ ._form-content { display: grid; gap: 16px; }
+  .cc-scope #_form_7_ .gc-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+  .cc-scope #_form_7_ .g-recaptcha { min-height: 78px; max-width: 100%; overflow: hidden; }
+  .cc-scope #_form_7_ input._has_error { border-color: var(--klei); background: var(--wit); }
+  .cc-scope #_form_7_ .gc-field-error, .cc-scope #_form_7_ ._form_error { font-size: 0.84rem; color: var(--klei); margin: -6px 0 0; }
+  .cc-scope #_form_7_ ._submit.processing { opacity: 0.6; cursor: wait; }
+  .cc-scope #_form_7_ ._form-thank-you { font-family: var(--serif); font-size: 1.5rem; line-height: 1.3; color: var(--bruin); padding: 12px 0; outline: none; }
+  .cc-scope #_form_7_ { display: block; }
   .cc-scope .gc-note { font-size: .82rem; color: var(--ink-soft); }
 
   /* bolletje dat zich inkleurt (van onder naar boven) bij openklappen */
@@ -706,16 +714,28 @@
           <h2 class="h2">Startersgids: <em>Kaarten maken</em></h2>
           <p class="lead">Voorkom dure fouten bij papier, drukwerk en ontwerp. Alles wat ik zelf had willen weten toen ik startte, in 1 gids.</p>
         </div>
-        <!-- ActiveCampaign formulier 7: vervang dit formulier door je embedcode of zet de juiste action-URL en veldnamen -->
-        <form class="gc-form" action="#" method="post" onsubmit="return false;">
+        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_7_" class="_form _form_7 _inline-form gc-form" novalidate>
+        <input type="hidden" name="u" value="7">
+        <input type="hidden" name="f" value="7">
+        <input type="hidden" name="s">
+        <input type="hidden" name="c" value="0">
+        <input type="hidden" name="m" value="0">
+        <input type="hidden" name="act" value="sub">
+        <input type="hidden" name="v" value="2">
+        <input type="hidden" name="or" value="3f7eaf3f-bdb9-41d8-96a6-8b7c7c7f5448">
+        <div class="_form-content">
           <div class="gc-row">
-            <label><span>Voornaam</span><input type="text" name="firstname" autocomplete="given-name" required></label>
-            <label><span>Naam</span><input type="text" name="lastname" autocomplete="family-name" required></label>
+            <label for="firstname"><span>Voornaam</span><input type="text" id="firstname" name="firstname" autocomplete="given-name"></label>
+            <label for="lastname"><span>Naam</span><input type="text" id="lastname" name="lastname" autocomplete="family-name"></label>
           </div>
-          <label><span>E-mailadres</span><input type="email" name="email" autocomplete="email" required></label>
-          <button type="submit" class="btn">Stuur mij de gids <span class="arr">→</span></button>
+          <label for="email"><span>E-mailadres</span><input type="email" id="email" name="email" autocomplete="email" required></label>
+          <div class="gc-hp" aria-hidden="true"><label for="gc-website">Laat dit veld leeg<input type="text" id="gc-website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
+          <button id="_form_7_submit" class="_submit btn" type="submit">Stuur mij de gids <span class="arr">→</span></button>
           <p class="gc-note">Je krijgt de gids meteen in je mailbox. Uitschrijven kan altijd.</p>
-        </form>
+        </div>
+        <div class="_form-thank-you" style="display:none;"></div>
+      </form>
       </div>
     </div>
   </section>
@@ -1080,5 +1100,72 @@
   })();
   </script>
 </div>
+<script>
+/* ActiveCampaign startersgids-formulier (form 7), met honeypot tegen bots */
+(function () {
+  var id = '7';
+  var R = window.__hpRoot || window.__mcRoot || document;
+  var form = R.getElementById('_form_7_');
+  if (!form) return;
+  var btn = R.getElementById('_form_7_submit');
+  var widget = null;
+  function clearErrors() {
+    form.querySelectorAll('.gc-field-error, ._form_error').forEach(function (e) { e.remove(); });
+    form.querySelectorAll('._has_error').forEach(function (e) { e.classList.remove('_has_error'); e.removeAttribute('aria-invalid'); });
+  }
+  function fieldError(input, msg) {
+    input.classList.add('_has_error'); input.setAttribute('aria-invalid', 'true');
+    var p = document.createElement('p'); p.className = 'gc-field-error'; p.setAttribute('role', 'alert'); p.textContent = msg;
+    input.closest('label').insertAdjacentElement('afterend', p); input.focus();
+  }
+  window._show_thank_you = function (i, message) {
+    form.querySelector('._form-content').style.display = 'none';
+    var t = form.querySelector('._form-thank-you');
+    t.innerHTML = message; t.style.display = 'block'; t.setAttribute('tabindex', '-1'); t.focus();
+  };
+  window._show_unsubscribe = window._show_thank_you;
+  window._show_pc_confirmation = function () {};
+  window._show_error = function (i, message, html) {
+    var old = form.querySelector('._form_error'); if (old) old.remove();
+    var p = document.createElement('p'); p.className = '_form_error'; p.setAttribute('role', 'alert');
+    p.innerHTML = message + (html ? '<br>' + html : '');
+    btn.parentNode.insertBefore(p, btn);
+    btn.disabled = false; btn.classList.remove('processing');
+  };
+  window._load_script = function (url, callback, isSubmit) {
+    var s = document.createElement('script'); s.charset = 'utf-8'; s.src = url;
+    if (callback) s.onload = callback;
+    s.onerror = function () { if (isSubmit) window._show_error(id, 'Sorry, je inschrijving is mislukt. Probeer het opnieuw.'); };
+    document.head.appendChild(s);
+  };
+  window.recaptcha_callback = function () {
+    var el = form.querySelector('.g-recaptcha');
+    if (el && widget === null) widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+  };
+  window._load_script('https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors();
+    var hp = form.querySelector('#gc-website');
+    if (hp && hp.value) return; /* bot: stil negeren */
+    var email = form.querySelector('[name="email"]');
+    email.value = email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value)) { fieldError(email, 'Vul een geldig e-mailadres in.'); return; }
+    try {
+      if (window.grecaptcha && widget !== null && grecaptcha.getResponse(widget) === '') { window._show_error(id, 'Vink eerst het vakje "Ik ben geen robot" aan.'); return; }
+    } catch (err) {}
+    var q = [];
+    for (var i = 0; i < form.elements.length; i++) {
+      var el = form.elements[i];
+      if (!el.name || el.tagName === 'BUTTON') continue;
+      q.push(el.name + '=' + encodeURIComponent(el.value));
+    }
+    if (widget !== null && !/g-recaptcha-response=/.test(q.join('&'))) q.push('g-recaptcha-response=' + encodeURIComponent(grecaptcha.getResponse(widget)));
+    btn.disabled = true; btn.classList.add('processing');
+    window._load_script('https://impressed.activehosted.com/proc.php?' + q.join('&') + '&jsonp=true', null, true);
+  });
+})();
+</script>
 </body>
 </html>

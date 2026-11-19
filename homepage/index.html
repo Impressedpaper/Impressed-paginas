@@ -1113,6 +1113,8 @@
     form.querySelector('._form-content').style.display = 'none';
     var t = form.querySelector('._form-thank-you');
     t.innerHTML = message; t.style.display = 'block'; t.setAttribute('tabindex', '-1'); t.focus();
+    /* daarna naar de bedankpagina met het aanbod */
+    setTimeout(function () { window.location.href = 'https://impressedpaper.com/je-startersgids-is-onderweg/'; }, 600);
   };
   window._show_unsubscribe = window._show_thank_you;
   window._show_pc_confirmation = function () {};

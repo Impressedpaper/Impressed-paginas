@@ -615,7 +615,7 @@
       <div class="themes program">
         <div class="theme reveal">
           <h3>Zelf drukken of bij een drukker?</h3>
-          <p>De voor- en nadelen van zelf printen tegenover uitbesteden. Zo weet je welke optie past bij jouw zaak en je budget.</p>
+          <p>De voor- en nadelen van zelf printen tegenover uitbesteden. Zo weet je welke optie past bij jouw business en je budget.</p>
         </div>
         <div class="theme reveal">
           <h3>De juiste printer kiezen</h3>
@@ -973,7 +973,20 @@
   };
   window.recaptcha_callback = function () {
     var el = form.querySelector('.g-recaptcha');
-    if (el && widget === null) widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+    if (!el || widget !== null) return;
+    /* reCAPTCHA werkt niet binnen een shadow DOM: zet het vakje in de gewone pagina en toon het via een slot */
+    if (R !== document && R.host) {
+      var light = document.createElement('div');
+      light.setAttribute('slot', 'gc-captcha');
+      light.style.minHeight = '78px';
+      R.host.appendChild(light);
+      var slot = document.createElement('slot'); slot.name = 'gc-captcha';
+      var key = el.getAttribute('data-sitekey');
+      el.innerHTML = ''; el.appendChild(slot);
+      widget = grecaptcha.render(light, { sitekey: key });
+    } else {
+      widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+    }
   };
   window._load_script('https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit');
 

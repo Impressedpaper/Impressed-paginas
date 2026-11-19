@@ -588,7 +588,7 @@
       <p class="for">Dan start je hier</p>
       <h3>Strategiecall 1-op-1</h3>
       <div class="meta"><span>90 minuten</span><span>€127</span><span>Incl. actieplan</span></div>
-      <p class="txt">In 90 minuten gaat het alleen over jouw zaak. We bekijken waarom je posts geen aanvragen opleveren, kiezen samen wat nu echt telt en schrappen de rest. Je gaat naar huis met een helder plan, plus een uitgeschreven actieplan in je mailbox. No bs, wel focus.</p>
+      <p class="txt">In 90 minuten gaat het alleen over jouw business. We bekijken waarom je posts geen aanvragen opleveren, kiezen samen wat nu echt telt en schrappen de rest. Je gaat naar huis met een helder plan, plus een uitgeschreven actieplan in je mailbox. No bs, wel focus.</p>
       <a class="btn" href="/contact">Plan je strategiecall <span class="arr">→</span></a>
     </template>
     <template id="ans-g3">
@@ -746,7 +746,7 @@
         </details>
         <details class="faq-item reveal">
           <summary>Ik ben niet zo techy. Kan ik wel met AI werken?<span class="ico" aria-hidden="true"><i></i></span></summary>
-          <p>Yes. We starten bij wat jij nu gebruikt, of net niet. Je hoeft geen tools te kennen, wel je eigen zaak.</p>
+          <p>Yes. We starten bij wat jij nu gebruikt, of net niet. Je hoeft geen tools te kennen, wel je eigen business.</p>
         </details>
         <details class="faq-item reveal">
           <summary>Zijn de Create &amp; Connect sessies fysiek?<span class="ico" aria-hidden="true"><i></i></span></summary>
@@ -1131,7 +1131,20 @@
   };
   window.recaptcha_callback = function () {
     var el = form.querySelector('.g-recaptcha');
-    if (el && widget === null) widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+    if (!el || widget !== null) return;
+    /* reCAPTCHA werkt niet binnen een shadow DOM: zet het vakje in de gewone pagina en toon het via een slot */
+    if (R !== document && R.host) {
+      var light = document.createElement('div');
+      light.setAttribute('slot', 'gc-captcha');
+      light.style.minHeight = '78px';
+      R.host.appendChild(light);
+      var slot = document.createElement('slot'); slot.name = 'gc-captcha';
+      var key = el.getAttribute('data-sitekey');
+      el.innerHTML = ''; el.appendChild(slot);
+      widget = grecaptcha.render(light, { sitekey: key });
+    } else {
+      widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+    }
   };
   window._load_script('https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit');
 

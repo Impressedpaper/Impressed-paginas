@@ -611,6 +611,7 @@
         <input type="hidden" name="act" value="sub">
         <input type="hidden" name="v" value="2">
         <input type="hidden" name="or" value="3f7eaf3f-bdb9-41d8-96a6-8b7c7c7f5448">
+        <input type="hidden" name="field[37]" id="sg-bron" value="">
         <div class="_form-content">
           <div class="gc-row">
             <label for="firstname"><span>Voornaam</span><input type="text" id="firstname" name="firstname" autocomplete="given-name"></label>
@@ -883,6 +884,14 @@
     }
   };
   window._load_script('https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit');
+
+  /* Bron bewaren (bv. ?utm_source=goodiebag van de QR-code) en meesturen naar ActiveCampaign, veld Bron */
+  try {
+    var bronUrl = new URLSearchParams(window.location.search).get('utm_source') || '';
+    if (bronUrl) sessionStorage.setItem('imp_bron', bronUrl);
+    var bronVeld = form.querySelector('[name="field[37]"]');
+    if (bronVeld) bronVeld.value = bronUrl || sessionStorage.getItem('imp_bron') || '';
+  } catch (err) {}
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();

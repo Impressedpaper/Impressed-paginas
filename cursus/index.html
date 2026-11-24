@@ -961,7 +961,8 @@
   Array.prototype.forEach.call(R.querySelectorAll('a[href^="#"]'), function(l){ l.addEventListener('click', function(e){ var t = R.getElementById(l.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); } }); });
   var bar = R.getElementById('ebBar'), spot = R.getElementById('ebSpot');
   if (bar && spot) {
-    var fix = function(){ var on = spot.getBoundingClientRect().top < 0; if (on !== bar.classList.contains('is-fixed')) { bar.classList.toggle('is-fixed', on); spot.style.height = on ? bar.offsetHeight + 'px' : ''; } };
+    var under = function(){ var off = 0; Array.prototype.forEach.call(document.querySelectorAll('#wpadminbar, header, .elementor-location-header, [data-elementor-type="header"], .elementor-sticky--active, .she-header'), function(h){ var cs = getComputedStyle(h); if (cs.position !== 'fixed' && cs.position !== 'sticky') return; var r = h.getBoundingClientRect(); if (r.top <= 1 && r.height > 0 && r.bottom > off && r.bottom < innerHeight / 2) off = r.bottom; }); return off; };
+    var fix = function(){ var off = under(); var on = spot.getBoundingClientRect().top < off; bar.style.top = on ? off + 'px' : ''; if (on !== bar.classList.contains('is-fixed')) { bar.classList.toggle('is-fixed', on); spot.style.height = on ? bar.offsetHeight + 'px' : ''; } };
     window.addEventListener('scroll', fix, {passive:true}); window.addEventListener('resize', fix); fix();
   }
   var el = R.getElementById('ebDays'); if (!el) return;

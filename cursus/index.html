@@ -558,7 +558,7 @@
   .cc-scope .incl li::before { content: ""; position: absolute; left: 2px; top: 1.15em; width: 9px; height: 9px; border: 1px solid var(--klei); border-radius: 50%; }
   .cc-scope .wrap.mid .copy p + p { margin-top: 1em; }
   /* ---------- CURSUS: EARLY BIRD ZICHTBAAR ---------- */
-  .cc-scope .eb-bar { position: sticky; top: 0; z-index: 50; background: var(--bruin); color: #FAF7F2; text-align: center; padding: 14px var(--edge); font-size: .95rem; line-height: 1.5; }
+  .cc-scope .eb-bar { position: relative; z-index: 9999; background: var(--bruin); color: #FAF7F2; text-align: center; padding: 14px var(--edge); font-size: .95rem; line-height: 1.5; }
   .cc-scope .eb-bar strong { font-weight: 600; }
   .cc-scope .eb-bar a { color: #FAF7F2; text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; white-space: nowrap; }
   .cc-scope .eb-bar a:hover { color: var(--zachtklei); }
@@ -572,13 +572,15 @@
   .cc-scope .band-trio { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; background: transparent; }
   .cc-scope .band-trio img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (max-width: 600px) { .cc-scope .band-trio { aspect-ratio: 3 / 2; gap: 6px; } }
+  .cc-scope .eb-bar.is-fixed { position: fixed; top: 0; left: 0; right: 0; box-shadow: 0 6px 18px -10px rgba(0,0,0,.35); }
 </style>
 
 </head>
 <body>
 <div class="cc-scope">
 
-  <div class="eb-bar"><strong>Maar 20 early bird plekken:</strong> €75 in plaats van €97, <span id="ebDays">tot 5 januari</span>. <a href="#inschrijven">Bekijk het aanbod</a></div>
+  <div id="ebSpot"></div>
+  <div class="eb-bar" id="ebBar"><strong>Maar 20 early bird plekken:</strong> €75 in plaats van €97, <span id="ebDays">tot 5 januari</span>. <a href="#inschrijven">Bekijk het aanbod</a></div>
 
 
   <!-- ============ BANNER MET QUOTE ============ -->
@@ -957,6 +959,11 @@
 (function(){
   var R = window.__mcRoot || document;
   Array.prototype.forEach.call(R.querySelectorAll('a[href^="#"]'), function(l){ l.addEventListener('click', function(e){ var t = R.getElementById(l.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); } }); });
+  var bar = R.getElementById('ebBar'), spot = R.getElementById('ebSpot');
+  if (bar && spot) {
+    var fix = function(){ var on = spot.getBoundingClientRect().top < 0; if (on !== bar.classList.contains('is-fixed')) { bar.classList.toggle('is-fixed', on); spot.style.height = on ? bar.offsetHeight + 'px' : ''; } };
+    window.addEventListener('scroll', fix, {passive:true}); window.addEventListener('resize', fix); fix();
+  }
   var el = R.getElementById('ebDays'); if (!el) return;
   var end = new Date('2027-01-05T23:59:59+01:00'), d = Math.ceil((end - new Date()) / 864e5);
   if (d > 7 || d < 1) return; el.textContent = d === 1 ? 'nog tot vanavond' : 'nog ' + d + ' dagen';

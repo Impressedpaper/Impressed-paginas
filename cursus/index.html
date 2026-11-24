@@ -557,11 +557,25 @@
   .cc-scope .incl li { position: relative; padding: 12px 0 12px 26px; border-bottom: 1px solid var(--line); font-size: .95rem; color: var(--ink-soft); }
   .cc-scope .incl li::before { content: ""; position: absolute; left: 2px; top: 1.15em; width: 9px; height: 9px; border: 1px solid var(--klei); border-radius: 50%; }
   .cc-scope .wrap.mid .copy p + p { margin-top: 1em; }
+  /* ---------- CURSUS: EARLY BIRD ZICHTBAAR ---------- */
+  .cc-scope .eb-bar { background: var(--bruin); color: #FAF7F2; text-align: center; padding: 14px var(--edge); font-size: .95rem; line-height: 1.5; }
+  .cc-scope .eb-bar strong { font-weight: 600; }
+  .cc-scope .eb-bar a { color: #FAF7F2; text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; white-space: nowrap; }
+  .cc-scope .eb-bar a:hover { color: var(--zachtklei); }
+  .cc-scope .mc-sub { display: block; font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 2.6vw, 1.7rem); color: var(--ink-faint); margin-top: 14px; }
+  .cc-scope .hero-price { margin: 22px 0 6px; }
+  .cc-scope .hero-price .new { font-size: clamp(2.6rem, 6vw, 3.4rem); }
+  .cc-scope .eb-note { display: block; font-family: var(--sans); font-size: .9rem; color: var(--klei); font-weight: 500; margin-top: 8px; }
+  .cc-scope .price-card { border: 1px solid var(--klei); background: #fff; padding: 30px 28px 14px; }
+  .cc-scope .price-card .eb-note { margin: 0 0 12px; font-size: .95rem; }
+  .cc-scope .price .new { color: var(--ink); }
 </style>
 
 </head>
 <body>
 <div class="cc-scope">
+
+  <div class="eb-bar"><strong>Early bird: €75 in plaats van €97.</strong> Nog <span id="ebDays">tot 5 januari</span>, maar 20 plekken. <a href="#inschrijven">Bekijk het aanbod</a></div>
 
 
   <!-- ============ BANNER MET QUOTE ============ -->
@@ -578,12 +592,13 @@
     <div class="mc-head-in">
       <div class="reveal">
         <h1 class="mc-title"><span>Kaarten maken</span> <em>als een pro</em></h1>
+        <span class="mc-sub">De online cursus, met samplepakket</span>
       </div>
       <div class="mc-head-side reveal">
         <p class="lead">Alles wat ik weet over papier, printers, embossing, foliedruk en leveranciers, nu in een online cursus die jij volgt wanneer het jou past. Met een samplepakket in je brievenbus.</p>
+        <p class="price hero-price"><s class="old">€97</s> <span class="new">€75</span><span class="eb-note">Early bird prijs, nog tot 5 januari en voor maar 20 plekken</span></p>
         <ul class="mc-facts">
           <li><span>Start</span>15 januari 2027, online</li>
-          <li><span>Early bird</span><s class="old">€97</s> €75, tot 5 januari</li>
           <li><span>Extra</span>Samplepakket en 1 live Q&amp;A met mij</li>
         </ul>
         <a class="btn btn-primary" href="#VERVANG-MET-PRODUCTLINK">Claim je early bird plekje <span class="arr">→</span></a>
@@ -745,6 +760,7 @@
           <p class="lead">Wie nu instapt, krijgt de cursus aan de laagste prijs en is er bij de enige live momenten die er nog komen.</p>
         </div>
         <div class="price-card reveal">
+          <span class="eb-note">Early bird prijs, tot 5 januari</span>
           <p class="price"><s class="old">€97</s> <span class="new">€75</span></p>
           <ul class="incl">
             <li>De volledige online cursus, toegang vanaf 15 januari 2027</li>
@@ -933,6 +949,15 @@
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
     })();
   </script>
+
+<script>
+(function(){
+  var R = window.__mcRoot || document;
+  var el = R.getElementById('ebDays'); if (!el) return;
+  var end = new Date('2027-01-05T23:59:59+01:00'), d = Math.ceil((end - new Date()) / 864e5);
+  if (d > 1) el.textContent = d + ' dagen'; else if (d === 1) el.textContent = 'tot vanavond';
+})();
+</script>
 
 </div>
 </body>

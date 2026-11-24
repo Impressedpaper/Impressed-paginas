@@ -956,6 +956,7 @@
 <script>
 (function(){
   var R = window.__mcRoot || document;
+  Array.prototype.forEach.call(R.querySelectorAll('a[href^="#"]'), function(l){ l.addEventListener('click', function(e){ var t = R.getElementById(l.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); } }); });
   var el = R.getElementById('ebDays'); if (!el) return;
   var end = new Date('2027-01-05T23:59:59+01:00'), d = Math.ceil((end - new Date()) / 864e5);
   if (d > 7 || d < 1) return; el.textContent = d === 1 ? 'nog tot vanavond' : 'nog ' + d + ' dagen';

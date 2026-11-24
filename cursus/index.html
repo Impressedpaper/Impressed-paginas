@@ -575,7 +575,7 @@
 <body>
 <div class="cc-scope">
 
-  <div class="eb-bar"><strong>Early bird: €75 in plaats van €97.</strong> Nog <span id="ebDays">tot 5 januari</span>, maar 20 plekken. <a href="#inschrijven">Bekijk het aanbod</a></div>
+  <div class="eb-bar"><strong>Maar 20 early bird plekken:</strong> €75 in plaats van €97, <span id="ebDays">tot 5 januari</span>. <a href="#inschrijven">Bekijk het aanbod</a></div>
 
 
   <!-- ============ BANNER MET QUOTE ============ -->
@@ -955,7 +955,7 @@
   var R = window.__mcRoot || document;
   var el = R.getElementById('ebDays'); if (!el) return;
   var end = new Date('2027-01-05T23:59:59+01:00'), d = Math.ceil((end - new Date()) / 864e5);
-  if (d > 1) el.textContent = d + ' dagen'; else if (d === 1) el.textContent = 'tot vanavond';
+  if (d > 7 || d < 1) return; el.textContent = d === 1 ? 'nog tot vanavond' : 'nog ' + d + ' dagen';
 })();
 </script>
 

@@ -587,29 +587,49 @@
   }
   .cc-scope .fc-end { padding-top: 0; }
   .cc-scope .fc-end .guide-card { margin-top: 0; }
+  .cc-scope .hero > img { object-position: center 64%; }
+  .cc-scope .hero h1 em { font-style: italic; }
+  .cc-scope .lp-hero .lp-title { max-width: 16ch; font-size: clamp(2.2rem, 4.2vw, 3.2rem); }
+  .cc-scope .fc-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 36px 0 0; border-top: 1px solid var(--line-strong); }
+  .cc-scope .fc-meta > div { padding: 18px 18px 0 0; }
+  .cc-scope .fc-meta > div + div { padding-left: 18px; border-left: 1px solid var(--line); }
+  .cc-scope .fc-meta dt { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--taupe); margin-bottom: 6px; }
+  .cc-scope .fc-meta dd { margin: 0; font-size: 0.9rem; line-height: 1.55; }
+  @media (max-width: 560px) { .cc-scope .fc-meta { grid-template-columns: 1fr; } .cc-scope .fc-meta > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .cc-scope .fc-meta > div { padding: 14px 0; } }
 </style>
 
 </head>
 <body>
 <div class="cc-scope">
 
-  <!-- ============ HERO + FORMULIER ============ -->
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img src="media/zaal.jpg" alt="Workshopzaal met op het scherm: Fijn dat je er bent">
+    <div class="hero-in">
+      <h1><span class="l">Slimmer werken,</span> <span class="l"><em>niet harder</em></span></h1>
+      <p class="hero-sub">Een gratis workshop waarin ik je toon hoe jij samenwerkt met AI.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#gids">Schrijf je gratis in <span class="arr">→</span></a>
+        <a class="link" href="#gids">Do 14 januari · Starthuis Vilvoorde</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO + FORMULIER ============ -->
   <section class="lp-hero">
     <div class="lp-hero-in">
       <div class="reveal">
-        <h1 class="lp-title">Gratis workshop: slimmer werken, niet harder <em>zo werk jij samen met AI</em></h1>
-        <p class="lp-sub">AI gebruiken om af en toe een tekst te laten schrijven, dat doen veel ondernemers al. Maar wat als AI echt meewerkt in je business? Tijdens deze workshop in Starthuis toon ik je hoe ik elke week samenwerk met AI, en hoe jij zelf begint.</p>
-        <ul class="lp-trust">
-          <li>Donderdag 14 januari 2027, 18u tot 19u30</li>
-          <li>Starthuis, Leuvensestraat 29, Vilvoorde</li>
-          <li>Gratis, maximaal 25 plaatsen</li>
-        </ul>
-        <img class="lp-mock" src="media/tafel.jpg" alt="Workshoptafel met laptops, post-its en bloemen">
+        <h2 class="lp-title">Zo werk jij <em>samen met AI</em></h2>
+        <p class="lp-sub">AI gebruiken om af en toe een tekst te laten schrijven, dat doen veel ondernemers al. Maar wat als AI echt meewerkt in je business? Tijdens deze workshop toon ik je hoe ik elke week samenwerk met AI, en hoe jij zelf begint.</p>
+        <dl class="fc-meta">
+          <div><dt>Wanneer</dt><dd>Donderdag 14 januari 2027<br>18u tot 19u30</dd></div>
+          <div><dt>Waar</dt><dd>Starthuis<br>Leuvensestraat 29, Vilvoorde</dd></div>
+          <div><dt>Prijs</dt><dd>Gratis<br>maximaal 25 plaatsen</dd></div>
+        </dl>
       </div>
       <div class="guide-card reveal" id="gids">
         <div class="gc-text">
           <h2 class="gc-title">Schrijf je in voor de workshop</h2>
-          <p class="lp-price"><strong>Gratis</strong></p>
         </div>
         <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17_" class="_form _form_17 _inline-form gc-form" novalidate>
         <input type="hidden" name="u" value="17">
@@ -637,7 +657,7 @@
     </div>
   </section>
 
-  <div class="straddle s-in"><div class="wrap"><figure class="band-photo reveal-img"><img src="media/zetel.jpg" alt="Saloua op de witte zetel met haar laptop naast zich" style="object-position: center 55%;"></figure></div></div>
+  <div class="straddle s-in"><div class="wrap"><figure class="band-photo reveal-img"><img src="media/laptop-handen.jpg" alt="Saloua aan haar laptop tijdens een workshop" style="object-position: center 40%;"></figure></div></div>
 
   <!-- ============ HERKENNING ============ -->
   <section class="section creme">
@@ -679,7 +699,7 @@
   <!-- ============ OVER MIJ ============ -->
   <section class="section ivoor">
     <div class="wrap mid guide">
-      <div class="photo reveal"><div class="frame"><img src="media/laptop-handen.jpg" alt="Saloua aan haar laptop tijdens een workshop, met koffie en taart op tafel" style="object-position: center 50%;"></div></div>
+      <div class="photo reveal"><div class="frame"><img src="media/zetel.jpg" alt="Saloua op de witte zetel met haar laptop naast zich" style="object-position: center 60%;"></div></div>
       <div class="reveal">
         <h2 class="h2">Hi, ik ben Saloua</h2>
         <div class="copy">

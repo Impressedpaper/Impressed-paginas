@@ -585,7 +585,6 @@
     .cc-scope .lp-hero .lp-mock { display: block !important; width: 100%; max-width: 380px; margin: 22px auto 4px !important; }
     .cc-scope .lp-mock-m { display: none !important; }
   }
-  .cc-scope .fc-end { padding-top: 0; }
   .cc-scope .fc-end .guide-card { margin-top: 0; }
   .cc-scope .hero > img { object-position: center 64%; }
   .cc-scope .hero h1 em { font-style: italic; }
@@ -606,6 +605,12 @@
   .cc-scope .gc-form .gc-check { display: flex; gap: 12px; align-items: flex-start; font-size: 0.86rem; line-height: 1.5; cursor: pointer; }
   .cc-scope .gc-form .gc-check input { width: 18px; height: 18px; min-height: 0; padding: 0; margin: 2px 0 0; flex: none; accent-color: var(--klei); }
   .cc-scope .gc-form .gc-check span { text-transform: none; letter-spacing: 0; font-size: 0.86rem; font-weight: 400; color: var(--ink); }
+  .cc-scope .fc-rev-title { text-align: center; margin-bottom: clamp(32px, 5vw, 56px); }
+  .cc-scope .fc-reviews { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2.5vw, 28px); max-width: 960px; margin: 0 auto; }
+  .cc-scope .fc-review { margin: 0; background: var(--wit); border: 1px solid var(--line); padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+  .cc-scope .fc-review blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.3rem); line-height: 1.45; color: var(--bruin); }
+  .cc-scope .fc-review figcaption { font-size: 0.82rem; color: var(--klei); }
+  @media (max-width: 720px) { .cc-scope .fc-reviews { grid-template-columns: 1fr; } }
 </style>
 
 </head>
@@ -652,10 +657,6 @@
         </div>
         <div class="_form-thank-you" style="display:none;"></div>
             </form>
-        <div class="lp-proof">
-          <blockquote>"Ik vond het heel erg gezellig en heb ook kunnen zien waar ik aan kon werken met mijn content."</blockquote>
-          <cite>Deelnemer aan een workshop van Impressed</cite>
-        </div>
       </div>
     </div>
   </section>
@@ -707,6 +708,19 @@
           <p>Ik werk alleen, dus ik moest wel <strong>slimmer werken in plaats van harder</strong>. Op deze avond toon ik je hoe ik dat doe.</p>
         </div>
               </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section creme">
+    <div class="wrap">
+      <h2 class="h2 fc-rev-title reveal">Wat deelnemers zeggen</h2>
+      <div class="fc-reviews">
+        <figure class="fc-review reveal"><blockquote>"De workshop was super leerrijk, ik heb heel wat tips en tools gekregen om te evolueren op vlak van contentcreatie. Altijd tof om andere ondernemers te ontmoeten en nieuwe connecties te maken."</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
+        <figure class="fc-review reveal"><blockquote>"Ik heb echt verschillende inzichten gekregen over contentcreatie en hoe ik met AI kan omgaan om het makkelijker te maken. Dankzij de workshop heb ik inspiratie genoeg om mijn ideeën uit te werken."</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
+        <figure class="fc-review reveal"><blockquote>"Ik vond het heel erg gezellig en heb ook kunnen zien waar ik aan kon werken met mijn content."</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
+        <figure class="fc-review reveal"><blockquote>"Dat was echt heel interessant, ik ben blij dat ik erbij kon zijn."</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
+      </div>
     </div>
   </section>
 

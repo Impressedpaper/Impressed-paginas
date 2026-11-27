@@ -624,6 +624,16 @@
   .cc-scope .fc-note::before { content: ""; position: absolute; top: -10px; left: 50%; width: 64px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: var(--zachtklei); opacity: 0.8; }
   .cc-scope .fc-note blockquote { margin: 0; font-family: var(--serif); font-size: 1.16rem; line-height: 1.5; color: var(--bruin); }
   @media (max-width: 720px) { .cc-scope .fc-note, .cc-scope .fc-note:nth-child(n) { transform: none; } }
+  .cc-scope .fc-slider { position: relative; max-width: var(--w-wide); margin: 0 auto; }
+  .cc-scope .fc-slider .fc-notes { display: flex; gap: clamp(18px, 2.5vw, 28px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 4px; padding: 16px 4px 28px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .cc-scope .fc-slider .fc-notes::-webkit-scrollbar { display: none; }
+  .cc-scope .fc-slider .fc-note { flex: 0 0 clamp(260px, 30%, 340px); scroll-snap-align: start; }
+  .cc-scope .fc-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--wit); color: var(--bruin); font-family: var(--serif); font-size: 1.6rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow-soft); }
+  .cc-scope .fc-prev { left: -22px; } .cc-scope .fc-next { right: -22px; }
+  .cc-scope .fc-nav:hover { background: var(--bruin); color: var(--wit); }
+  @media (max-width: 720px) { .cc-scope .fc-nav { display: none; } .cc-scope .fc-slider .fc-note { flex-basis: 82%; } .cc-scope .fc-slider .fc-note:nth-child(n) { transform: rotate(-0.8deg); } }
+  .cc-scope .fc-mphoto { display: none; }
+  @media (max-width: 720px) { .cc-scope .fc-mphoto { display: block; margin: 0; padding: 0 var(--edge); background: var(--wit); } .cc-scope .fc-mphoto img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-photo); } }
 </style>
 
 </head>
@@ -683,6 +693,8 @@
     </div>
   </section>
 
+  <figure class="fc-mphoto"><img src="media/laptop-handen.jpg" alt="Saloua aan haar laptop tijdens een workshop" loading="lazy"></figure>
+
   <!-- ============ WAT JE ZIET ============ -->
   <section class="section" id="inhoud">
     <div class="wrap">
@@ -729,12 +741,16 @@
     <div class="wrap">
       <h2 class="h2 fc-rev-title reveal">Wat deelnemers zeggen over mijn vorige workshops</h2>
       <figure class="fc-feat reveal"><span class="fc-qmark" aria-hidden="true">“</span><blockquote>Een heel aangename avond, omdat er op één duidelijk onderwerp gefocust werd. Ik voelde mij <span class="mk">totaal niet overweldigd</span>. Het was eerder een tof netwerkmoment waarbij jij jouw geheimen in Claude met ons deelde en we vragen konden stellen.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
-      <div class="fc-notes">
+      <div class="fc-slider">
+      <button class="fc-nav fc-prev" type="button" aria-label="Vorige review">‹</button>
+      <div class="fc-notes" tabindex="0">
         <figure class="fc-note reveal"><blockquote>Ik vond het echt gezellig, verbindend en vooral heel leerzaam. Ik ben <span class="mk">met nieuwe motivatie naar huis</span> gegaan. Er kwamen contentideeën naar boven waarvan ik zelf nog niet eens doorhad dat het ideeën waren.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
         <figure class="fc-note reveal"><blockquote>Het was top! Ik heb weer veel bijgeleerd. Ik ga minder nadenken over mijn content en <span class="mk">meer durven posten</span>. Alles was duidelijk en je bent super fijn om naar te luisteren.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
         <figure class="fc-note reveal"><blockquote>Super interessant, ik heb er echt extreem veel uit geleerd. De workshop was <span class="mk">een deur die voor me openging</span>.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
         <figure class="fc-note reveal"><blockquote>De workshop was echt een succes. Ik heb heel veel nieuwe dingen geleerd en <span class="mk">je legde alles heel goed uit</span>. Het was ook leuk om de struggles van andere vrouwen over content te horen en ideeën op te doen van elkaar.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
         <figure class="fc-note reveal"><blockquote>Ik heb echt verschillende inzichten gekregen over contentcreatie en hoe ik met AI kan omgaan om het makkelijker te maken. Dankzij de workshop heb ik <span class="mk">inspiratie genoeg</span> om mijn ideeën uit te werken.</blockquote><figcaption>Deelnemer aan Create &amp; Connect</figcaption></figure>
+      </div>
+      <button class="fc-nav fc-next" type="button" aria-label="Volgende review">›</button>
       </div>
     </div>
   </section>
@@ -1015,6 +1031,16 @@
     bar.setAttribute('aria-hidden', on ? 'false' : 'true');
     bar.querySelector('a').tabIndex = on ? 0 : -1;
   }, { threshold: 0.05 }).observe(card);
+})();
+</script>
+<script>
+(function () {
+  var R = window.__fcRoot || document;
+  var box = R.querySelector('.fc-slider .fc-notes'); if (!box) return;
+  function go(d) { var c = box.querySelector('.fc-note'); var w = c ? c.getBoundingClientRect().width + 24 : 300; box.scrollBy({ left: d * w, behavior: 'smooth' }); }
+  var p = R.querySelector('.fc-prev'), n = R.querySelector('.fc-next');
+  if (p) p.addEventListener('click', function () { go(-1); });
+  if (n) n.addEventListener('click', function () { go(1); });
 })();
 </script>
 </div>

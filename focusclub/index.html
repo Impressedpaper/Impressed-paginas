@@ -625,9 +625,9 @@
   .cc-scope .fc-note blockquote { margin: 0; font-family: var(--serif); font-size: 1.16rem; line-height: 1.5; color: var(--bruin); }
   @media (max-width: 720px) { .cc-scope .fc-note, .cc-scope .fc-note:nth-child(n) { transform: none; } }
   .cc-scope .fc-slider { position: relative; max-width: var(--w-wide); margin: 0 auto; }
-  .cc-scope .fc-slider .fc-notes { display: flex; gap: clamp(18px, 2.5vw, 28px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 4px; padding: 16px 4px 28px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .cc-scope .fc-slider .fc-notes { display: flex; gap: clamp(18px, 2.5vw, 28px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 4px; padding: 16px 4px 28px; scrollbar-width: none; align-items: stretch; -webkit-overflow-scrolling: touch; }
   .cc-scope .fc-slider .fc-notes::-webkit-scrollbar { display: none; }
-  .cc-scope .fc-slider .fc-note { flex: 0 0 clamp(260px, 30%, 340px); scroll-snap-align: start; }
+  .cc-scope .fc-slider .fc-note { flex: 0 0 clamp(260px, 30%, 340px); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: space-between; min-height: 300px; box-sizing: border-box; }
   .cc-scope .fc-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--wit); color: var(--bruin); font-family: var(--serif); font-size: 1.6rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow-soft); }
   .cc-scope .fc-prev { left: -22px; } .cc-scope .fc-next { right: -22px; }
   .cc-scope .fc-nav:hover { background: var(--bruin); color: var(--wit); }

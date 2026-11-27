@@ -1043,6 +1043,22 @@
   if (n) n.addEventListener('click', function () { go(1); });
 })();
 </script>
+<script>
+/* Ankerlinks (#gids) werken niet vanzelf in een shadow DOM: zelf naar het formulier scrollen */
+(function () {
+  var R = window.__fcRoot || document;
+  Array.prototype.forEach.call(R.querySelectorAll('a[href^="#"]'), function (a) {
+    a.addEventListener('click', function (e) {
+      var t = R.getElementById(a.getAttribute('href').slice(1));
+      if (!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      var f = t.querySelector('input[name="firstname"]'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 600);
+    });
+  });
+})();
+</script>
 </div>
 </body>
 </html>

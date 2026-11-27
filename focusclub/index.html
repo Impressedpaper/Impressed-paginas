@@ -600,6 +600,12 @@
   .cc-scope .fc-map { color: inherit; text-decoration: none; }
   .cc-scope .fc-map:hover { text-decoration: underline; text-underline-offset: 3px; }
   .cc-scope .lp-hero.fc-bg { background-color: var(--papier); background-image: linear-gradient(90deg, rgba(245,241,234,0.95) 0%, rgba(245,241,234,0.9) 45%, rgba(245,241,234,0.62) 100%), url(media/zaal.jpg); background-size: cover; background-position: center 55%; }
+  .cc-scope .gc-form textarea { font: inherit; font-size: 1rem; color: var(--ink); background: var(--creme); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; width: 100%; box-sizing: border-box; resize: vertical; min-height: 84px; }
+  .cc-scope .gc-form textarea:focus { outline: none; border-color: var(--bruin); background: var(--wit); }
+  .cc-scope .gc-form .opt { font-style: normal; text-transform: none; letter-spacing: 0; opacity: 0.7; }
+  .cc-scope .gc-form .gc-check { display: flex; gap: 12px; align-items: flex-start; font-size: 0.86rem; line-height: 1.5; cursor: pointer; }
+  .cc-scope .gc-form .gc-check input { width: 18px; height: 18px; min-height: 0; padding: 0; margin: 2px 0 0; flex: none; accent-color: var(--klei); }
+  .cc-scope .gc-form .gc-check span { text-transform: none; letter-spacing: 0; font-size: 0.86rem; font-weight: 400; color: var(--ink); }
 </style>
 
 </head>
@@ -611,7 +617,7 @@
     <div class="lp-hero-in">
       <div class="reveal">
         <h1 class="lp-title">Slimmer werken, <em>niet harder</em></h1>
-        <p class="lp-sub">Een gratis workshop voor ondernemers die AI al eens geprobeerd hebben. Maar wat als AI echt meewerkt in je business? Ik laat je zien hoe ik dat elke week doe, en hoe jij zelf begint.</p>
+        <p class="lp-sub">Een gratis workshop in de Focus Club van START.huis, voor ondernemers die AI al eens geprobeerd hebben. Maar wat als AI echt meewerkt in je business? Ik laat je zien hoe ik dat elke week doe, en hoe jij zelf begint.</p>
         <dl class="fc-meta">
           <div><dt>Wanneer</dt><dd>Donderdag 14 januari 2027<br>18u tot 19u30</dd></div>
           <div><dt>Waar</dt><dd>START.huis<br><a class="fc-map" href="https://www.google.com/maps/search/?api=1&amp;query=START.huis%2C%20Leuvensestraat%2029%2C%201800%20Vilvoorde" target="_blank" rel="noopener">Leuvensestraat 29, Vilvoorde</a></dd></div>
@@ -622,9 +628,9 @@
         <div class="gc-text">
           <h2 class="gc-title">Schrijf je in voor de workshop</h2>
         </div>
-        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17_" class="_form _form_17 _inline-form gc-form" novalidate>
-        <input type="hidden" name="u" value="17">
-        <input type="hidden" name="f" value="17">
+        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17_" class="_form _form_18 _inline-form gc-form" novalidate>
+        <input type="hidden" name="u" value="18">
+        <input type="hidden" name="f" value="18">
         <input type="hidden" name="s">
         <input type="hidden" name="c" value="0">
         <input type="hidden" name="m" value="0">
@@ -637,6 +643,8 @@
             <label for="lastname"><span>Naam</span><input type="text" id="lastname" name="lastname" autocomplete="family-name"></label>
           </div>
           <label for="email"><span>E-mailadres</span><input type="email" id="email" name="email" autocomplete="email" required></label>
+          <label for="vraag"><span>Wat wil je vooral uit deze avond halen? <em class="opt">(optioneel)</em></span><textarea id="vraag" name="field[39]" rows="3"></textarea></label>
+          <label class="gc-check" for="toestemming"><input type="checkbox" id="toestemming" name="field[38][]" value="Ja"><span>Ja, stuur me ook tips over slimmer werken met AI en het aanbod van Impressed per mail. Uitschrijven kan altijd.</span></label>
           <div class="gc-hp" aria-hidden="true"><label for="gc-website">Laat dit veld leeg<input type="text" id="gc-website" class="gc-honey" tabindex="-1" autocomplete="off"></label></div>
           <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
           <button id="_form_17_submit" class="_submit btn btn-primary" type="submit">Schrijf me in</button>
@@ -710,9 +718,9 @@
           <h2 class="gc-title">Kom je ook op 14 januari?</h2>
           <p class="lp-sub">Donderdag 14 januari 2027, 18u tot 19u30 in START.huis, Vilvoorde. Gratis, beperkte plaatsen.</p>
         </div>
-        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17b_" class="_form _form_17 _inline-form gc-form" novalidate>
-        <input type="hidden" name="u" value="17">
-        <input type="hidden" name="f" value="17">
+        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17b_" class="_form _form_18 _inline-form gc-form" novalidate>
+        <input type="hidden" name="u" value="18">
+        <input type="hidden" name="f" value="18">
         <input type="hidden" name="s">
         <input type="hidden" name="c" value="0">
         <input type="hidden" name="m" value="0">
@@ -725,6 +733,8 @@
             <label for="lastname2"><span>Naam</span><input type="text" id="lastname2" name="lastname" autocomplete="family-name"></label>
           </div>
           <label for="email2"><span>E-mailadres</span><input type="email" id="email2" name="email" autocomplete="email" required></label>
+          <label for="vraag2"><span>Wat wil je vooral uit deze avond halen? <em class="opt">(optioneel)</em></span><textarea id="vraag2" name="field[39]" rows="3"></textarea></label>
+          <label class="gc-check" for="toestemming2"><input type="checkbox" id="toestemming2" name="field[38][]" value="Ja"><span>Ja, stuur me ook tips over slimmer werken met AI en het aanbod van Impressed per mail. Uitschrijven kan altijd.</span></label>
           <div class="gc-hp" aria-hidden="true"><label for="gc-website2">Laat dit veld leeg<input type="text" id="gc-website2" class="gc-honey" tabindex="-1" autocomplete="off"></label></div>
           <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
           <button id="_form_17b_submit" class="_submit btn btn-primary" type="submit">Schrijf me in</button>
@@ -860,7 +870,7 @@
 <script>
 /* ActiveCampaign Focus Club-formulier (form 17), twee keer op de pagina (boven en onder), met honeypot tegen bots */
 (function () {
-  var id = '17';
+  var id = '18';
   var R = window.__fcRoot || document;
   var forms = ['_form_17_', '_form_17b_'].map(function (fid) {
     var f = R.getElementById(fid);
@@ -951,6 +961,7 @@
       for (var i = 0; i < form.elements.length; i++) {
         var el = form.elements[i];
         if (!el.name || el.tagName === 'BUTTON') continue;
+        if (el.type === 'checkbox' && !el.checked) continue;
         q.push(el.name + '=' + encodeURIComponent(el.value));
       }
       if (x.widget !== null && window.grecaptcha) { try { q.push('g-recaptcha-response=' + encodeURIComponent(grecaptcha.getResponse(x.widget))); } catch (err) {} }

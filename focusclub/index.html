@@ -522,12 +522,19 @@
 
   /* ---------- STARTERSGIDS: ActiveCampaign formulier in huisstijl ---------- */
   .cc-scope #_form_17_ ._form-content { display: grid; gap: 16px; }
+  .cc-scope #_form_17b_ ._form-content { display: grid; gap: 16px; }
   .cc-scope #_form_17_ .gc-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+  .cc-scope #_form_17b_ .gc-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
   .cc-scope #_form_17_ .g-recaptcha { min-height: 78px; max-width: 100%; overflow: hidden; }
+  .cc-scope #_form_17b_ .g-recaptcha { min-height: 78px; max-width: 100%; overflow: hidden; }
   .cc-scope #_form_17_ input._has_error { border-color: var(--klei); background: var(--wit); }
+  .cc-scope #_form_17b_ input._has_error { border-color: var(--klei); background: var(--wit); }
   .cc-scope #_form_17_ .gc-field-error, .cc-scope #_form_17_ ._form_error { font-size: 0.84rem; color: var(--klei); margin: -6px 0 0; }
+  .cc-scope #_form_17b_ .gc-field-error, .cc-scope #_form_17b_ ._form_error { font-size: 0.84rem; color: var(--klei); margin: -6px 0 0; }
   .cc-scope #_form_17_ ._submit.processing { opacity: 0.6; cursor: wait; }
+  .cc-scope #_form_17b_ ._submit.processing { opacity: 0.6; cursor: wait; }
   .cc-scope #_form_17_ ._form-thank-you { font-family: var(--serif); font-size: 1.5rem; line-height: 1.3; color: var(--bruin); padding: 12px 0; outline: none; }
+  .cc-scope #_form_17b_ ._form-thank-you { font-family: var(--serif); font-size: 1.5rem; line-height: 1.3; color: var(--bruin); padding: 12px 0; outline: none; }
 
   
   .cc-scope .straddle.s-in { background: linear-gradient(var(--wit) 0 50%, var(--creme) 50% 100%); }
@@ -578,6 +585,8 @@
     .cc-scope .lp-hero .lp-mock { display: block !important; width: 100%; max-width: 380px; margin: 22px auto 4px !important; }
     .cc-scope .lp-mock-m { display: none !important; }
   }
+  .cc-scope .fc-end { padding-top: 0; }
+  .cc-scope .fc-end .guide-card { margin-top: 0; }
 </style>
 
 </head>
@@ -617,10 +626,10 @@
             <label for="lastname"><span>Naam</span><input type="text" id="lastname" name="lastname" autocomplete="family-name"></label>
           </div>
           <label for="email"><span>E-mailadres</span><input type="email" id="email" name="email" autocomplete="email" required></label>
-          <div class="gc-hp" aria-hidden="true"><label for="gc-website">Laat dit veld leeg<input type="text" id="gc-website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="gc-hp" aria-hidden="true"><label for="gc-website">Laat dit veld leeg<input type="text" id="gc-website" class="gc-honey" tabindex="-1" autocomplete="off"></label></div>
           <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
           <button id="_form_17_submit" class="_submit btn btn-primary" type="submit">Schrijf me in <span class="arr">→</span></button>
-          <p class="gc-note">Je krijgt een bevestiging per mail. Geen spam, uitschrijven kan altijd.</p>
+          <p class="gc-note">Kan je toch niet komen? Laat het me minstens 48 uur op voorhand weten door op je bevestigingsmail te antwoorden, dan geeft je plaats iemand anders een kans. Geen spam, uitschrijven kan altijd.</p>
         </div>
         <div class="_form-thank-you" style="display:none;"></div>
       </form>
@@ -677,7 +686,40 @@
           <p>Met Impressed help ik ondernemers om minder tijd te verliezen aan content en marketing, door slim gebruik te maken van AI.</p>
           <p>Ik werk alleen, dus ik moest wel <strong>slimmer werken in plaats van harder</strong>. Op deze avond toon ik je hoe ik dat doe.</p>
         </div>
-        <div style="margin-top:26px;"><a class="btn btn-primary" href="#gids">Schrijf je gratis in <span class="arr">→</span></a></div>
+              </div>
+    </div>
+  </section>
+
+  <!-- ============ INSCHRIJVEN ONDERAAN ============ -->
+  <section class="section ivoor fc-end" id="inschrijven">
+    <div class="wrap">
+      <div class="guide-card reveal">
+        <div class="gc-text">
+          <h2 class="gc-title">Kom je ook op 14 januari?</h2>
+          <p class="lp-sub">Donderdag 14 januari 2027, 18u tot 19u30 in Starthuis, Vilvoorde. Gratis, maximaal 25 plaatsen.</p>
+        </div>
+        <form method="POST" action="https://impressed.activehosted.com/proc.php" id="_form_17b_" class="_form _form_17 _inline-form gc-form" novalidate>
+        <input type="hidden" name="u" value="17">
+        <input type="hidden" name="f" value="17">
+        <input type="hidden" name="s">
+        <input type="hidden" name="c" value="0">
+        <input type="hidden" name="m" value="0">
+        <input type="hidden" name="act" value="sub">
+        <input type="hidden" name="v" value="2">
+        <input type="hidden" name="field[37]" value="">
+        <div class="_form-content">
+          <div class="gc-row">
+            <label for="firstname2"><span>Voornaam</span><input type="text" id="firstname2" name="firstname" autocomplete="given-name" required></label>
+            <label for="lastname2"><span>Naam</span><input type="text" id="lastname2" name="lastname" autocomplete="family-name"></label>
+          </div>
+          <label for="email2"><span>E-mailadres</span><input type="email" id="email2" name="email" autocomplete="email" required></label>
+          <div class="gc-hp" aria-hidden="true"><label for="gc-website2">Laat dit veld leeg<input type="text" id="gc-website2" class="gc-honey" tabindex="-1" autocomplete="off"></label></div>
+          <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
+          <button id="_form_17b_submit" class="_submit btn btn-primary" type="submit">Schrijf me in <span class="arr">→</span></button>
+          <p class="gc-note">Kan je toch niet komen? Laat het me minstens 48 uur op voorhand weten door op je bevestigingsmail te antwoorden, dan geeft je plaats iemand anders een kans. Geen spam, uitschrijven kan altijd.</p>
+        </div>
+        <div class="_form-thank-you" style="display:none;"></div>
+      </form>
       </div>
     </div>
   </section>
@@ -804,17 +846,19 @@
     })();
   </script>
 <script>
-/* ActiveCampaign Focus Club-formulier (form 17), met honeypot tegen bots */
+/* ActiveCampaign Focus Club-formulier (form 17), twee keer op de pagina (boven en onder), met honeypot tegen bots */
 (function () {
   var id = '17';
   var R = window.__fcRoot || document;
-  var form = R.getElementById('_form_17_');
-  if (!form) return;
-  var btn = R.getElementById('_form_17_submit');
-  var widget = null;
-  function clearErrors() {
-    form.querySelectorAll('.gc-field-error, ._form_error').forEach(function (e) { e.remove(); });
-    form.querySelectorAll('._has_error').forEach(function (e) { e.classList.remove('_has_error'); e.removeAttribute('aria-invalid'); });
+  var forms = ['_form_17_', '_form_17b_'].map(function (fid) {
+    var f = R.getElementById(fid);
+    return f ? { form: f, btn: R.getElementById(fid + 'submit'), widget: null, slot: 'cap-' + fid } : null;
+  }).filter(Boolean);
+  if (!forms.length) return;
+  var active = forms[0];
+  function clearErrors(f) {
+    f.querySelectorAll('.gc-field-error, ._form_error').forEach(function (e) { e.remove(); });
+    f.querySelectorAll('._has_error').forEach(function (e) { e.classList.remove('_has_error'); e.removeAttribute('aria-invalid'); });
   }
   function fieldError(input, msg) {
     input.classList.add('_has_error'); input.setAttribute('aria-invalid', 'true');
@@ -822,19 +866,21 @@
     input.closest('label').insertAdjacentElement('afterend', p); input.focus();
   }
   window._show_thank_you = function (i, message) {
-    form.querySelector('._form-content').style.display = 'none';
-    var t = form.querySelector('._form-thank-you');
-    t.innerHTML = message; t.style.display = 'block'; t.setAttribute('tabindex', '-1'); t.focus();
-    
+    forms.forEach(function (x) {
+      x.form.querySelector('._form-content').style.display = 'none';
+      var t = x.form.querySelector('._form-thank-you');
+      t.innerHTML = message; t.style.display = 'block';
+    });
+    var t = active.form.querySelector('._form-thank-you'); t.setAttribute('tabindex', '-1'); t.focus();
   };
   window._show_unsubscribe = window._show_thank_you;
   window._show_pc_confirmation = function () {};
   window._show_error = function (i, message, html) {
-    var old = form.querySelector('._form_error'); if (old) old.remove();
+    var old = active.form.querySelector('._form_error'); if (old) old.remove();
     var p = document.createElement('p'); p.className = '_form_error'; p.setAttribute('role', 'alert');
     p.innerHTML = message + (html ? '<br>' + html : '');
-    btn.parentNode.insertBefore(p, btn);
-    btn.disabled = false; btn.classList.remove('processing');
+    active.btn.parentNode.insertBefore(p, active.btn);
+    active.btn.disabled = false; active.btn.classList.remove('processing');
   };
   window._load_script = function (url, callback, isSubmit) {
     var s = document.createElement('script'); s.charset = 'utf-8'; s.src = url;
@@ -843,51 +889,62 @@
     document.head.appendChild(s);
   };
   window.recaptcha_callback = function () {
-    var el = form.querySelector('.g-recaptcha');
-    if (!el || widget !== null) return;
-    /* reCAPTCHA werkt niet binnen een shadow DOM: zet het vakje in de gewone pagina en toon het via een slot */
-    if (R !== document && R.host) {
-      var light = document.createElement('div');
-      light.setAttribute('slot', 'gc-captcha');
-      light.style.minHeight = '78px';
-      R.host.appendChild(light);
-      var slot = document.createElement('slot'); slot.name = 'gc-captcha';
-      var key = el.getAttribute('data-sitekey');
-      el.innerHTML = ''; el.appendChild(slot);
-      widget = grecaptcha.render(light, { sitekey: key });
-    } else {
-      widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
-    }
+    forms.forEach(function (x) {
+      var el = x.form.querySelector('.g-recaptcha');
+      if (!el || x.widget !== null) return;
+      /* reCAPTCHA werkt niet binnen een shadow DOM: zet het vakje in de gewone pagina en toon het via een slot */
+      if (R !== document && R.host) {
+        var light = document.createElement('div');
+        light.setAttribute('slot', x.slot);
+        light.style.minHeight = '78px';
+        R.host.appendChild(light);
+        var slot = document.createElement('slot'); slot.name = x.slot;
+        var key = el.getAttribute('data-sitekey');
+        el.innerHTML = ''; el.appendChild(slot);
+        x.widget = grecaptcha.render(light, { sitekey: key });
+      } else {
+        x.widget = grecaptcha.render(el, { sitekey: el.getAttribute('data-sitekey') });
+      }
+    });
   };
   window._load_script('https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit');
 
-  /* Bron bewaren (bv. ?utm_source=goodiebag van de QR-code) en meesturen naar ActiveCampaign, veld Bron */
+  /* Bron bewaren (bv. ?utm_source=starthuis) en meesturen naar ActiveCampaign, veld Bron */
+  var bron = '';
   try {
-    var bronUrl = new URLSearchParams(window.location.search).get('utm_source') || '';
-    if (bronUrl) sessionStorage.setItem('imp_bron', bronUrl);
-    var bronVeld = form.querySelector('[name="field[37]"]');
-    if (bronVeld) bronVeld.value = bronUrl || sessionStorage.getItem('imp_bron') || '';
+    bron = new URLSearchParams(window.location.search).get('utm_source') || '';
+    if (bron) sessionStorage.setItem('imp_bron', bron);
+    bron = bron || sessionStorage.getItem('imp_bron') || '';
   } catch (err) {}
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    clearErrors();
-    var hp = form.querySelector('#gc-website');
-    if (hp && hp.value) return; /* bot: stil negeren */
-    var email = form.querySelector('[name="email"]');
-    email.value = email.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value)) { fieldError(email, 'Vul een geldig e-mailadres in.'); return; }
-    try {
-      if (window.grecaptcha && widget !== null && grecaptcha.getResponse(widget) === '') { window._show_error(id, 'Vink eerst het vakje "Ik ben geen robot" aan.'); return; }
-    } catch (err) {}
-    var q = [];
-    for (var i = 0; i < form.elements.length; i++) {
-      var el = form.elements[i];
-      if (!el.name || el.tagName === 'BUTTON') continue;
-      q.push(el.name + '=' + encodeURIComponent(el.value));
-    }
-    btn.disabled = true; btn.classList.add('processing');
-    window._load_script('https://impressed.activehosted.com/proc.php?' + q.join('&') + '&jsonp=true', null, true);
+  forms.forEach(function (x) {
+    var form = x.form;
+    var bv = form.querySelector('[name="field[37]"]'); if (bv) bv.value = bron;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      active = x;
+      clearErrors(form);
+      var hp = form.querySelector('.gc-honey');
+      if (hp && hp.value) return; /* bot: stil negeren */
+      var fn = form.querySelector('[name="firstname"]');
+      fn.value = fn.value.trim();
+      if (!fn.value) { fieldError(fn, 'Vul je voornaam in.'); return; }
+      var email = form.querySelector('[name="email"]');
+      email.value = email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value)) { fieldError(email, 'Vul een geldig e-mailadres in.'); return; }
+      try {
+        if (window.grecaptcha && x.widget !== null && grecaptcha.getResponse(x.widget) === '') { window._show_error(id, 'Vink eerst het vakje "Ik ben geen robot" aan.'); return; }
+      } catch (err) {}
+      var q = [];
+      for (var i = 0; i < form.elements.length; i++) {
+        var el = form.elements[i];
+        if (!el.name || el.tagName === 'BUTTON') continue;
+        q.push(el.name + '=' + encodeURIComponent(el.value));
+      }
+      if (x.widget !== null && window.grecaptcha) { try { q.push('g-recaptcha-response=' + encodeURIComponent(grecaptcha.getResponse(x.widget))); } catch (err) {} }
+      x.btn.disabled = true; x.btn.classList.add('processing');
+      window._load_script('https://impressed.activehosted.com/proc.php?' + q.join('&') + '&jsonp=true', null, true);
+    });
   });
 })();
 </script>

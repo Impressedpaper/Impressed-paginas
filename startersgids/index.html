@@ -910,6 +910,7 @@
       if (!el.name || el.tagName === 'BUTTON') continue;
       q.push(el.name + '=' + encodeURIComponent(el.value));
     }
+    try { if (widget !== null && window.grecaptcha && !/g-recaptcha-response=/.test(q.join('&'))) q.push('g-recaptcha-response=' + encodeURIComponent(grecaptcha.getResponse(widget))); } catch (err) {}
     btn.disabled = true; btn.classList.add('processing');
     window._load_script('https://impressed.activehosted.com/proc.php?' + q.join('&') + '&jsonp=true', null, true);
   });
